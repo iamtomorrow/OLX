@@ -1,0 +1,41 @@
+
+.AuthLayout {
+    min-width: 220px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.header-link {
+    cursor: pointer;
+    padding: 6px 24px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+
+.signin-link {
+    background: rgba(0, 0, 0, 0.02);
+    color: rgb(63, 63, 63);
+    transition: all .25s ease;
+}
+.signin-link:hover {
+    background: rgba(0, 0, 0, 0.005);
+    transition: all .25s ease;
+}
+
+.detach-link {
+    color: #ffffff;
+    background: linear-gradient(#ff6b00, #ff3d00);
+    transition: all .25s ease;
+}
+.detach-link:hover {
+    background: linear-gradient(#ff6a009e, #ff3c0081);
+    transition: all .25s ease;
+}

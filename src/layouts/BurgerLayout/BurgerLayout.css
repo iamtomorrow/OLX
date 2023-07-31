@@ -1,0 +1,15 @@
+
+.BurgerLayout {
+    z-index: 10;
+    width: 10%;
+    height: 34px;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-icon {
+    cursor: pointer;
+    color: rgb(68, 68, 68);
+}
