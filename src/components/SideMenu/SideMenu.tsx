@@ -1,4 +1,7 @@
 
+/* auth handlers imports */
+import { logout } from '../../assistant/authHandler';
+
 /* icon imports */
 import UserIcon from 'remixicon-react/UserLineIcon';
 import NotsIcon from 'remixicon-react/NotificationLineIcon';
@@ -21,6 +24,11 @@ import './SideMenu.css';
 
 export const SideMenu = ( ) => {
     const menu = useSelector((state: RootState) => state.menu);
+
+    const handleLogout = (  ) => {
+        logout();
+        window.location.href = "/";
+    }
 
     return (
         <div className={`SideMenu SideMenu-${ menu.toggled ? "active" : ""}`}>
@@ -51,10 +59,10 @@ export const SideMenu = ( ) => {
                         <AdsIcon className='menu-link-icon' />
                         <p className='menu-link-p'>My Ads</p>
                     </Link>
-                    <Link to="/Logout" className='menu-link link'>
+                    <button className='menu-link link' onClick={ handleLogout }> 
                         <LogOutIcon className='menu-link-icon' />
                         <p className='menu-link-p'>Logout</p>
-                    </Link>
+                    </button>
                 </div>
             </div>
             <div className='side-menu-footer--container'>

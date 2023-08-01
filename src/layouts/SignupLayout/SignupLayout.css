@@ -1,0 +1,8 @@
+
+.select-form--container {
+    cursor: pointer;
+    height: 30px;
+    background: #ffffff;
+    padding-left: 6px;
+    border: none;
+}

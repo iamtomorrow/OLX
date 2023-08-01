@@ -67,6 +67,7 @@
     justify-content: flex-start;
     transition: all .25s ease;
     border-radius: 10px;
+    background: none;
 }
 .menu-link:hover {
     background: #f0f0f0;

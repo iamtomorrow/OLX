@@ -13,6 +13,7 @@ import { Home } from './pages/Home/Home.tsx';
 import { About } from './pages/About/About.tsx';
 import { NotFound } from './pages/NotFound/NotFound.tsx';
 import { Signin } from './pages/Signin/Signin.tsx';
+import { Signup } from './pages/Signup/Signup.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path='/' element={ <Home /> } />
           <Route path='/About' element={ <About /> } />
           <Route path='/Signin' element={ <Signin /> } />
+          <Route path='/Signup' element={ <Signup /> } />
           <Route path="*" element={ <NotFound /> } />
         </Routes>
       </Provider>

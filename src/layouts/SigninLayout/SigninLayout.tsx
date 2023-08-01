@@ -1,68 +1,103 @@
 
-/* icon imports */
-import GoogleIcon from 'remixicon-react/GoogleFillIcon';
-import FacebookIcon from 'remixicon-react/FacebookFillIcon';
-import TwitterIcon from 'remixicon-react/TwitterFillIcon';
+/* API imports */
+import API from '../../assistant/api';
+import { doLogin } from '../../assistant/authHandler';
 
 /* react imports */
-import { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 
+/* layout imports */
+import { ErrorLayout } from '../ErrorLayout/ErrorLayout';
+
+/* type imports */
+import { ErrorProps } from '../ErrorLayout/ErrorLayout';
+
+/* style imports */
 import './SigninLayout.css';
+import { SignOptionsContainer } from '../SignOptionsContainer/SignOptionsContainer';
 
 export const SigninLayout = ( ) => {
     const [ email, setEmail ] = useState<string>("");
     const [ password, setPassword ] = useState<string>("");
     const [ disabled, setDisabled ] = useState<boolean>(false);
 
+    const [ error, setError ] = useState<boolean>(false);
+    const [ errorLog, setErrorLog ] = useState<string>("");
+    const [ errorLogs, setErrorLogs ] = useState< ErrorProps[] | any >([]);
+
+    const handleSubmit = async ( event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setDisabled( true );
+        setErrorLog("");
+        setErrorLogs("");
+        const data = await  API.signin(email, password);
+
+        // console.log(data);
+
+        if ( data.error === undefined ) {
+            setDisabled(false);
+            setError(false);
+            setErrorLog("");
+            doLogin(data?.token);
+            window.location.href = "/";
+        } else {
+            setDisabled(false);
+            setError(true);
+
+            if (data.error.errors ) {
+                setErrorLogs( data.error.errors );
+            } else {
+                setErrorLog( data.error );
+            }
+        }
+    }
+
     return (
-        <div className='SigninLayout'>
+        <div className='SigninLayout fm-sign--container'>
             <div className='signin-layout-header--container'>
                 <h3 className='header-text'>Signin</h3>
             </div>
-            <div className='signin-layout-options--container'>
-                <p>Sign in with:</p>
-                <div className='signin-icons'>
-                    <GoogleIcon />
-                    <FacebookIcon />
-                    <TwitterIcon />
-                </div>
-                <p>or:</p>
-            </div>
+            
+            <SignOptionsContainer name={"Signin"} />
+
             <div className='signin-layout-form--container'>
                 <form className='signin-form'>
                     <label className='form-label'>
-                        { /* <span className='form-span'>Email</span> */ }
                         <div className='form-input--container'>
                             <input className='form-input' 
                                 type='text' 
                                 name='email' 
                                 required 
                                 placeholder='Email'
-                                disabled={ disabled } />
+                                autoFocus
+                                disabled={ disabled }
+                                onChange={ (e) => setEmail(e.target.value) } />
                             <div className='input-border-bottom'></div>
                         </div>
                     </label>
                     <label className='form-label'>
-                        { /* <span className='form-span'>Password</span> */ }
                         <div className='form-input--container'>
                             <input className='form-input' 
-                                type='text' 
+                                type='password' 
                                 name='password' 
                                 required 
                                 placeholder='Password'
-                                disabled={ disabled } / >
+                                disabled={ disabled } 
+                                onChange={ (e) => setPassword(e.target.value) } />
                             <div className='input-border-bottom'></div>
                         </div>
                     </label>
+                    {
+                        error &&
+                        <ErrorLayout errorLabel={ errorLog } errorLabels={ errorLogs } />
+                    }
                     <div className='form-footer-info'>
                         <p className='form-footer-info-text'>By proceeding, you consent to get email or SMS messages, including by automated means, from Tomorrow [tm] and its affiliates to the email provided.</p>
                     </div>
                 </form>
             </div>
             <div className='submit-form-button--container'>
-                <button type='submit' className='submit--button'>
-                    Signin
-                </button>
+                <input type='submit' onClick={ handleSubmit } />
             </div>
         </div>
     )

@@ -1,0 +1,17 @@
+
+.ErrorLayout {
+    width: 80%;
+    height: 60px;
+    border-radius: 12px;
+    border: 1px solid red;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-label {
+    color: red;
+    font-size: 12px;
+}
