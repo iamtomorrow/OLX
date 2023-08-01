@@ -32,6 +32,7 @@ export const SigninLayout = ( ) => {
         setErrorLogs("");
         const data = await  API.signin(email, password);
 
+        // alert(data);
         // console.log(data);
 
         if ( data.error === undefined ) {

@@ -45,9 +45,34 @@ const API = {
     },
 
     getStates: async ( ) => {
-        let response = await fetch("http://localhost:3200/states", { method: "GET" });
-        let data = await response.json();
-        return data?.result;
+        try {
+            let response = await fetch("http://localhost:3200/states", { method: "GET" });
+            let data = await response.json();
+            return data?.result;
+        } catch (err) {
+            return err;
+        }
+
+    },
+
+    getCategories: async ( ) => {
+        try {
+            let response = await fetch(`${baseUrl}/categories`);
+            let data =  await response.json();
+            return data?.categories;
+        } catch (err) {
+            return err;
+        }
+    },
+
+    getAds: async ( ) => {
+        try {
+            let response = await fetch(`${baseUrl}/ads`);
+            let data = await response.json();
+            return data?.ads;
+        } catch (err) {
+            return err;
+        }
     }
 };
 

@@ -23,4 +23,10 @@ const signin = async ( email, password ) => {
     console.log(data);
 }
 
-signin("chrome@gmail.com", "chrome1234");
+const getAds = async ( ) => {
+    let response = await fetch("http://localhost:3200/ads", { method: "GET" });
+    let data = await response.json();
+    console.log(data);
+}
+
+getAds();
