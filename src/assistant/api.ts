@@ -1,4 +1,5 @@
 import Cookies from "ts-cookies";
+import qs from 'qs';
 
 const baseUrl = 'http://localhost:3200';
 
@@ -26,6 +27,7 @@ const API = {
                 token = token ;
             }
         }
+        console.log("starting request...");
 
         try {
             let response = await fetch(`${baseUrl}/users/signin`, 
@@ -70,6 +72,24 @@ const API = {
             let response = await fetch(`${baseUrl}/ads`);
             let data = await response.json();
             return data?.ads;
+        } catch (err) {
+            return err;
+        }
+    }, 
+
+    getAd: async ( id: string, filter?: string ) => {
+        const query = qs.stringify({id, filter});
+        try {
+            let response = await fetch(`${baseUrl}/ads/a?${query}`,
+            {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            });
+            let data = await response.json();
+            return data;
         } catch (err) {
             return err;
         }

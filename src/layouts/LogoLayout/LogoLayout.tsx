@@ -8,7 +8,7 @@ import './LogoLayout.css';
 export const LogoLayout = ( ) => {
     return (
         <div className='LogoLayout'>
-            <Link to="/">
+            <Link to="/" className='logo-link'>
                 <img src={ Logo } id='logo'/>
             </Link>
         </div>

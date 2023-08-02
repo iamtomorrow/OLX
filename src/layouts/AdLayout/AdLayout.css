@@ -1,0 +1,175 @@
+
+.AdLayout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 20px 0 20px 0;
+    /* background-color: rosybrown; */
+}
+
+.ad-top--layout {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: safe;
+    justify-content: space-around;
+}
+.ad-bottom--layout {
+    width: 100%;
+    height: 100px;
+}
+
+.ad-bar--container {
+    width: 100%;
+    min-height: 100%;
+    padding: 3px 20px 3px 20px;
+}
+
+.ad-bar-header--container {
+    width: 100%;
+    min-height: 100px;
+    padding: 2px 2px 2px 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    justify-content: center;
+}
+
+.ad-header-info {
+    color: #2F2F2F;
+}
+.ad-name {
+    font-size: 26px;
+}
+.ad-date-created, .ad-id {
+    font-size: 12px;
+}
+
+.ad-bar-carousel--container {
+    width: 100%;
+    height: 400px;
+}
+
+.ad-body-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.ad-bar-footer--container {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+}
+.ad-price {
+    font-size: 26px;
+}
+
+.ad-bar-description--container {
+    width: 100%;
+    border-radius: 10px;
+    padding: 3px 9px 3px 9px;
+    background: #d4d4d450;
+}
+.bar-title {
+    font-size: 12px;
+}
+
+.ad-bar-details--container {
+    width: 100%;
+    height: 50px;
+    margin-top: 16px;
+    border-radius: 10px;
+    padding: 3px 9px 3px 9px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.ad-bar-location--container,
+.ad-bar-category--container,
+.ad-bar-views--container {
+    margin-right: 16px;
+    height: 100%;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #d4d4d450;
+    border-radius: 10px;
+}
+
+.advertiser-bar--container {
+    position: relative;
+    width: 60%;
+    height: 100vh;
+    top: 0;
+    border-radius: 10px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+.advertiser-bar-header--container {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.advertiser-avatar--container {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #d4d4d450;
+}
+.advertiser-buttons--container {
+    width: 100%;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.advertiser-button {
+    width: 80%;
+    height: 40px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+#buy-now-button {
+    background: linear-gradient(45deg, #FF6B00, #FF3D00);
+    color: #ffffff;
+}
+
+.ad-options--layout {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.ad-option {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #FF6B00;
+}
+
+@media screen and (min-width: 1000px) {
+    .AdLayout {
+        width: 60%;
+    }
+}

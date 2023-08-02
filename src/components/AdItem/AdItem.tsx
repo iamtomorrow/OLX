@@ -10,8 +10,13 @@ interface AdItemProps {
 
 export const AdItem = ( { key, data  }: AdItemProps ) => {
 
+    // console.log(data);
+    const handleAdItemClick = ( id: string ) => {
+        window.location.href = `/Ad/${id}`;
+    }
+
     return (
-        <div className="AdItem" id={ `${key}` }>
+        <div className="AdItem" id={ `${key}` } onClick={ () => handleAdItemClick(data._id) }>
             <div className="ad-item-body">
                 <img src={ data.images[0].url } className="ad-item-image" />
             </div>

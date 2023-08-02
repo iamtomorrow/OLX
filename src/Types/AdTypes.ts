@@ -1,3 +1,4 @@
+import { UserProps } from "./UserTypes"
 
 interface AdImageProps {
     name: string,
@@ -5,6 +6,7 @@ interface AdImageProps {
 }
 
 export interface AdProps {
+    _id: string,
     name: string,
     id_user: string,
     state: string,
@@ -16,4 +18,5 @@ export interface AdProps {
     status: string,
     date_created: string,
     images: [AdImageProps]
+    advertiser: [UserProps]
 }

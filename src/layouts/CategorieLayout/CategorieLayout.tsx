@@ -8,7 +8,7 @@ import { CategorieProps } from '../../Types/CategorieTypes';
 export const CategorieLayout = ( { _id, name, slug }: CategorieProps ) => {
     return (
         <div className="CategorieLayout" id={ _id }>
-            <img src={`../../../public/media/images/icons/${slug}.svg`} className='category-icon' />
+            <img src={`../../../public/media/images/icons2/${slug}.png`} className='category-icon' />
             <p className='category-name'>{ name }</p>
         </div>
     )

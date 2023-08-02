@@ -70,8 +70,8 @@ export const SearchBar = ( ) => {
                     </div>
                 </div>
             </div>
-            <div className={`categories-filter-bar search-bar-filter${ toggleFilters ? "--active" : "" }`}>
-                { categories && toggleFilters &&
+            <div className={`search-bar-filter--active`}>
+                { categories &&
                     categories.map(item => (
                         <CategorieLayout _id={item._id} name={ item.name } slug={ item.slug } />
                     ))

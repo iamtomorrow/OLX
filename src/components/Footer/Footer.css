@@ -1,0 +1,23 @@
+
+.Footer {
+    background-color: #F2F2F2;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer-content--container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-links--container ul {
+    display: flex;
+    flex-direction: column;
+}

@@ -22,19 +22,33 @@ export const Header = ( ) => {
     return (
         <div className='Header'>
             <div className='top-header--container'>
-                { winWidth < 630 &&
-                    <> 
-                        <BurgerLayout />
-                        <LogoLayout /> 
-                    </>
-                }
-                { winWidth >= 630 &&
-                    <>
-                        <LogoLayout />
-                        <NavbarLayout />
-                    </>
-                }
-                <AuthLayout />
+                <div className='header-left--container'>
+                    { winWidth < 630 &&
+                        <> 
+                            <BurgerLayout />
+                        </>
+                    }
+                    { winWidth >= 630 &&
+                        <>
+                            <LogoLayout /> 
+                        </>
+                    }
+                </div>
+                <div className='header-central--container'>
+                    { winWidth < 630 &&
+                        <>
+                            <LogoLayout /> 
+                        </>
+                    }
+                    { winWidth >= 630 &&
+                        <>
+                            <NavbarLayout />
+                        </>
+                    }
+                </div>
+                <div className='header-right--container'>
+                    <AuthLayout />
+                </div>
             </div>
             <div className='bottom-header--container'>
                 <SearchBar />

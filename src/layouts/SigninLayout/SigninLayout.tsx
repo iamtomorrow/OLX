@@ -30,9 +30,9 @@ export const SigninLayout = ( ) => {
         setDisabled( true );
         setErrorLog("");
         setErrorLogs("");
-        const data = await  API.signin(email, password);
+        let data = await API.signin(email, password);
 
-        // alert(data);
+        // alert(data); cors error;
         // console.log(data);
 
         if ( data.error === undefined ) {
