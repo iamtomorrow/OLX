@@ -4,4 +4,5 @@ export interface UserProps {
     name: string,
     email: string,
     state: string,
+    date_created: string
 }

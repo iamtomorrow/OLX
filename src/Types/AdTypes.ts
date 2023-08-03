@@ -1,6 +1,6 @@
 import { UserProps } from "./UserTypes"
 
-interface AdImageProps {
+export interface AdImageProps {
     name: string,
     url: string
 }

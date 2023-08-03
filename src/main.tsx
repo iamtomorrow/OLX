@@ -15,6 +15,7 @@ import { NotFound } from './pages/NotFound/NotFound.tsx';
 import { Signin } from './pages/Signin/Signin.tsx';
 import { Signup } from './pages/Signup/Signup.tsx';
 import { Ad } from './pages/Ad/Ad.tsx';
+import { MyAccount } from './pages/MyAccount/MyAccount.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
@@ -26,6 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path='/Signin' element={ <Signin /> } />
           <Route path='/Signup' element={ <Signup /> } />
           <Route path='/Ad/:id' element={ <Ad /> } />
+          <Route path='/MyAccount' element={ <MyAccount /> } />
           <Route path="*" element={ <NotFound /> } />
         </Routes>
       </Provider>

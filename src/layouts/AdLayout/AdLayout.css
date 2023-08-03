@@ -1,6 +1,6 @@
 
 .AdLayout {
-    width: 100%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -47,7 +47,7 @@
     font-size: 12px;
 }
 
-.ad-bar-carousel--container {
+.carousel {
     width: 100%;
     height: 400px;
 }
@@ -106,16 +106,33 @@
     border-radius: 10px;
 }
 
+.break-crumb--container {
+    width: auto;
+    background-color: #d4d4d400;
+    border-radius: 20px;
+    height: 40px;
+    padding: 6px 12px 6px 12px;
+    font-size: 12px;
+    color: #2F2F2F;
+}
+
 .advertiser-bar--container {
     position: relative;
     width: 60%;
     height: 100vh;
     top: 0;
-    border-radius: 10px;
-    background-color: #ffffff;
     display: flex;
+    padding-right: 20px;
     flex-direction: column;
 }
+
+.advertiser-inner-bar--container {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
 .advertiser-bar-header--container {
     width: 100%;
     height: 200px;
@@ -130,6 +147,13 @@
     border-radius: 50%;
     background-color: #d4d4d450;
 }
+
+.advertiser-date {
+    text-align: center;
+    color: #6a6a6a;
+    font-size: 14px;
+}
+
 .advertiser-buttons--container {
     width: 100%;
     height: 140px;
@@ -144,10 +168,18 @@
     border-radius: 20px;
     font-weight: bold;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #buy-now-button {
     background: linear-gradient(45deg, #FF6B00, #FF3D00);
     color: #ffffff;
+}
+
+#contact-button {
+    background: rgba(0, 0, 0, 0.05);
+    color: #2F2F2F;
 }
 
 .ad-options--layout {
@@ -168,8 +200,19 @@
     color: #FF6B00;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (max-width: 900px) {
     .AdLayout {
-        width: 60%;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .ad-top--layout  {
+        flex-direction: column;
+    }
+    .advertiser-bar--container {
+        width: 100%;
+        height: auto;
+        padding: 20px;
     }
 }

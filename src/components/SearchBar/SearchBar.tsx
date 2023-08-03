@@ -20,7 +20,8 @@ import { CategorieProps } from '../../Types/CategorieTypes';
 
 export const SearchBar = ( ) => {
     const [ states, setStates ] = useState<StateProps[]>([]);
-    const [  categories, setCategories ] = useState<CategorieProps[]>([]);
+    const [ categories, setCategories ] = useState<CategorieProps[]>([]);
+    const [ searchInput, setSearchInput ] = useState<string>("");
 
     const [ toggleFilters, setToggleFilters ] = useState(false);
 
@@ -50,12 +51,16 @@ export const SearchBar = ( ) => {
         }
     }
 
+    const handleSearchInput = async ( ) => {
+        alert(searchInput);
+    }
+
     return (
         <div className="SearchBar">
             <div className='search-bar--container'>
-                <input id='search-input' placeholder="Search..." />
+                <input id='search-input' placeholder="Search..." onChange={ (e: React.ChangeEvent<HTMLInputElement>) => setSearchInput(e.target.value)} />
                 <div className='search-side-bar--container'>
-                    <SearchIcon id='search-bar-icon' className='search-bar-icon' />
+                    <SearchIcon id='search-bar-icon' className='search-bar-icon' onClick={ handleSearchInput } />
                     <EqualizerFillIcon id='toggle-filters-icon' className="search-bar-icon"
                             onClick={ handleToggle } />
                     <div className='filter-states--container'>

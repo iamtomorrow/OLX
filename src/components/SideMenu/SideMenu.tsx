@@ -41,7 +41,7 @@ export const SideMenu = ( ) => {
             </div>
             <div className='side-menu-body--container'>
                 <div className='side-menu-body'>
-                    <Link to="/Account" id='my-account-link'>
+                    <Link to="/MyAccount" id='my-account-link'>
                         <div id='user-icon--container'>
                         <UserIcon className='menu-link-icon' id='my-account-icon' />
                         </div>
