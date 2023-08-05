@@ -29,7 +29,6 @@ export const SearchBar = ( ) => {
         const getCategories = async ( ) => {
             let data = await API.getCategories();
             setCategories( data );
-            // console.log(states);
         }
         getCategories();
     }, []);

@@ -18,7 +18,7 @@ export const AuthLayout = ( ) => {
                 </div>
             }
             <div className='detach-button--container'>
-                <Link to={`${!logged ? "/Signin" : "/Detach"}`} className='detach-link header-link link'>
+                <Link to={"/Detach"} className='detach-link header-link link'>
                     Detach
                 </Link>
             </div>

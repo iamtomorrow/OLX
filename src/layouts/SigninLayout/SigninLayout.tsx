@@ -98,7 +98,7 @@ export const SigninLayout = ( ) => {
                 </form>
             </div>
             <div className='submit-form-button--container'>
-                <input type='submit' onClick={ handleSubmit } />
+                <button type='submit' onClick={ handleSubmit } className='submit-form-button' >Signin</button>
             </div>
         </div>
     )

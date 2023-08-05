@@ -21,12 +21,13 @@ import { Link } from 'react-router-dom';
 export const AdLayout = () => {
     const [ ad, setAd ] = useState<AdProps>();
     let [ counter, setCounter] = useState<number>(0);
-    const [ loading, setLoading] = useState<boolean>(true);
+    const [ loading, setLoading ] = useState<boolean>(true);
     const [ defaultImage, setDefaultImage ] = useState<string>("");
 
     const { id } = useParams();
 
     useEffect(() => {
+        // console.log("Searching ads...");
         const getAd = async () => {
             let data = await API.getAd(id as string, "");
             setAd(data?.ad[0]);
@@ -39,7 +40,6 @@ export const AdLayout = () => {
         if (loading === false) {
             let len = ad?.images.length as number;
             setInterval( () => {
-                // console.log(counter);
                 setDefaultImage(ad?.images[counter].url as string);
                 setCounter(counter+=1);
                 if (counter === len) {
@@ -55,10 +55,10 @@ export const AdLayout = () => {
                 <Link to={"/"} className='link'>
                     <span>Home /</span>
                 </Link>
-                <Link to={`/ads?state=${ad?.state}`} className='link'>
+                <Link to={`/ads/?state=${ad?.state}`} className='link'>
                     <span> {ad?.state} /</span>
                 </Link>
-                <Link to={`/ads?state=${ad?.state}&category=${ad?.category}`} className='link'>
+                <Link to={`/ads/?state=${ad?.state}&category=${ad?.category}`} className='link'>
                     <span> {ad?.category} /</span>
                 </Link>
                 <span> {ad?.name} </span>
@@ -84,7 +84,7 @@ export const AdLayout = () => {
                     </div>
                     <div className='ad-bar-footer--container'>
                         <p className='ad-price ad-footer-info'>$ {ad?.price}</p>
-                        { ad?.price_negotiable &&
+                        { !ad?.price_negotiable === true &&
                             <p>Price negotiable</p>
                         }
                         <p className='ad-id'>Code: {ad?._id}</p>
@@ -100,11 +100,11 @@ export const AdLayout = () => {
                         </div>
                         <div className='ad-bar-category--container'>
                             <span className='bar-title'>Category</span>
-                            <p className='ad-location'>{ad?.category}</p>
+                            <p className='ad-category'>{ad?.category}</p>
                         </div>
                         <div className='ad-bar-views--container'>
                             <span className='bar-title'>Views</span>
-                            <p className='ad-location'>{ad?.views}</p>
+                            <p className='ad-views'>{ad?.views}</p>
                         </div>
                     </div>
                 </div>

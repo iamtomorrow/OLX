@@ -3,6 +3,16 @@ import qs from 'qs';
 
 const baseUrl = 'http://localhost:3200';
 
+interface PostAdProps {
+    name: string,
+    category: string,
+    state: string,
+    price: string,
+    price_negotiable: string,
+    description: string,
+    images: [any]
+}
+
 const API = {
     signup: async ( name: string, email: string, state: string, password: string ) => {
         let response = await fetch(`${baseUrl}/users/signup`, {
@@ -71,16 +81,17 @@ const API = {
         try {
             let response = await fetch(`${baseUrl}/ads`);
             let data = await response.json();
+            console.log("s", data);
             return data?.ads;
         } catch (err) {
             return err;
         }
-    }, 
+    },
 
-    getAd: async ( id: string, filter?: string ) => {
-        const query = qs.stringify({id, filter});
+    getAd: async ( id: string, other?: false ) => {
+        const query = qs.stringify({id, other});
         try {
-            let response = await fetch(`${baseUrl}/ads/a?${query}`,
+            let response = await fetch(`${baseUrl}/ads/?id=${query}`,
             {
                 method: "GET",
                 headers: {
@@ -89,6 +100,22 @@ const API = {
                 }
             });
             let data = await response.json();
+            return data;
+        } catch (err) {
+            return err;
+        }
+    },
+
+    postAd: async ( body: any ) => {
+        let token = Cookies.get("token");
+        try {
+            let response = await fetch(`${baseUrl}/ads/create?token=${token}`, 
+            {
+                method: "POST",
+                body
+            })
+            let data = await response.json();
+            console.log(data);
             return data;
         } catch (err) {
             return err;

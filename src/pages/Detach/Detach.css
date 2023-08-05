@@ -1,0 +1,93 @@
+
+.detach--container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.detach-header--container {
+    padding: 20px 10px;
+    width: 100%;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.detach-top-header--container {
+    width: inherit;
+    padding: 0 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.go-home-icon--container {
+    display: flex;
+}
+
+.help-icon--container,
+.go-home-icon--container {
+    cursor: pointer;
+}
+
+.detach-categories--container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.detach-form--container {
+    width: 320px;
+    height: auto;
+    background: #f1f1f1;
+    border-radius: 20px;
+    transition: all .25s ease;
+}
+
+.detach-form-header--container {
+    height: 60px;
+    width: 100%;
+    padding: 3px 12px 3px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.go-back-icon--container {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.go-back-icon--container:hover {
+    background: #89898917;
+}
+.go-back-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* form */
+.detach-form-header-title {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.form-textarea--container {
+    width: 100%;
+    height: 100%;
+    padding-left: 32px;
+    padding-right: 32px;
+}

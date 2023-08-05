@@ -6,6 +6,7 @@ import './index.css'
 import { Provider } from 'react-redux';
 import { store } from './redux/store.ts';
 
+/* routes imports */
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 /* Pages imports */
@@ -16,18 +17,31 @@ import { Signin } from './pages/Signin/Signin.tsx';
 import { Signup } from './pages/Signup/Signup.tsx';
 import { Ad } from './pages/Ad/Ad.tsx';
 import { MyAccount } from './pages/MyAccount/MyAccount.tsx';
+import { ProtectedRoute } from './assistant/routeHandler.tsx';
+import { Detach } from './pages/Detach/Detach.tsx';
+import { SideMenu } from './components/SideMenu/SideMenu.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <React.StrictMode>
       <Provider store={ store }>
+        <SideMenu />
         <Routes>
           <Route path='/' element={ <Home /> } />
           <Route path='/About' element={ <About /> } />
           <Route path='/Signin' element={ <Signin /> } />
           <Route path='/Signup' element={ <Signup /> } />
           <Route path='/Ad/:id' element={ <Ad /> } />
-          <Route path='/MyAccount' element={ <MyAccount /> } />
+          <Route path='/MyAccount' element={
+            <ProtectedRoute>
+              <MyAccount />
+            </ProtectedRoute>
+          } />
+          <Route path='/Detach' element={
+            <ProtectedRoute>
+               <Detach /> 
+            </ProtectedRoute>
+          } />
           <Route path="*" element={ <NotFound /> } />
         </Routes>
       </Provider>
