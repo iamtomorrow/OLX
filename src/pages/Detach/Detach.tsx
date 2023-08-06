@@ -1,6 +1,6 @@
 
 /* react imports */
-import { LegacyRef, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /* style imports */
 import './Detach.css';
@@ -21,10 +21,14 @@ import ArrowIcon from 'remixicon-react/ArrowLeftLineIcon';
 import HelpIcon from 'remixicon-react/QuestionLineIcon';
 
 /* routes imports */
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { ErrorLayout } from '../../layouts/ErrorLayout/ErrorLayout';
 
 export const Detach = ( ) => {
     const files = useRef() as React.LegacyRef<HTMLInputElement>;
+    const navigate = useNavigate();
+    const [ errors, setErrors ] = useState<string[]>([]);
+    const [ detachErrors, setDetachErrors ] = useState<string []>([]);
 
     const [ stateList, setStateList ] = useState<StateProps []>([]);
     const [ categories, setCategories ] = useState<CategorieProps[]>([]);
@@ -67,18 +71,16 @@ export const Detach = ( ) => {
         setCategoryActive(false);
     }
 
-    const handleDetachClick = ( e: React.FormEvent<HTMLFormElement> ) => {  
+    const handleDetachClick = async ( e: React.FormEvent<HTMLFormElement> ) => {  
         e.preventDefault();
-        
-        let detachErrors = [];
         if (title.trim() === "") {
-            detachErrors.push("A valid title must be providaded.");
+            setDetachErrors(prev => [...prev, "A valid title must be providaded."]);
         }
         if (price === "") {
-            detachErrors.push("A valid price must be provided!");
+            setDetachErrors(prev => [...prev, "A valid price must be provided!"]);
         }
         if (state === "") {
-            detachErrors.push("A valid state must be provided!");
+            setDetachErrors(prev => [...prev, "A valid state must be provided!"]);
         }
 
         if (detachErrors.length === 0) {
@@ -97,8 +99,13 @@ export const Detach = ( ) => {
                     }
                 }
             }
-            // alert(`${title}, ${adCategory}, ${state}, ${description}, ${price}, ${priceNegotiable}`);
-            API.postAd(formData);
+            let result = await API.postAd(formData);
+            if (result.err) {
+                console.log("Something was wrong!");
+            } else {
+                navigate(`/Ad/${result.ad._id}`);
+                return;
+            }
         }
     }
 
@@ -122,13 +129,11 @@ export const Detach = ( ) => {
 
                     <div className='detach-categories--container'>
                         { categories &&
-                            categories.map(item => (
-                                <>
-                                    <div className="CategoryLayout " id={ item._id } onClick={ () => handleCategoryClick(item._id, item.name) } >
-                                        <img src={`../../../public/media/images/icons2/${item.slug}.png`} className='category-icon' />
-                                        <p className='category-name'>{ item.name }</p>
-                                    </div>
-                                </>
+                            categories.map((item, index: number)=> (
+                                <div className="CategoryLayout " key={ index } id={ item._id } onClick={ () => handleCategoryClick(item._id, item.name) } >
+                                    <img src={`../../../public/media/images/icons2/${item.slug}.png`} className='category-icon' />
+                                    <p className='category-name'>{ item.name }</p>
+                                </div>
                             ))
                         }
                     </div>
@@ -190,7 +195,12 @@ export const Detach = ( ) => {
                                 <select placeholder='State' className='select-form--container'>
                                     <option></option>
                                     {
-                                        stateList.map(i => <option onClick={ () => setState(i.name) }>{i?.name}</option>)
+                                        stateList.map((i, index:number) => 
+                                        <option 
+                                            key={index} 
+                                            id={`${i.name}-state`} 
+                                            onClick={ () => setState(i.name) }>{i?.name}
+                                        </option>)
                                     }
                                 </select>
                             </label>

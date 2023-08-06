@@ -17,34 +17,42 @@ import { AdProps } from '../../Types/AdTypes';
 import './AdsContainer.css';
 import { AdItem } from '../AdItem/AdItem';
 
-export const AdsContainer = ( { id, label }: AdsContainerProps ) => {
+export const AdsContainer = ( { id, label, category }: AdsContainerProps ) => {
     const [ ads, setAds ] = useState<AdProps[]>([]);
-
     useEffect( () => {
         
     }, []);
 
     useEffect( () => {
         const getAds = async ( ) => {
-            let data = await API.getAds();
+            let data = await API.getAds(category);
             setAds( data );
-            // console.log(ads);
         }
         getAds();
     }, []);
 
+    const handleScrollBack = ( ) => {
+        const carousel = window.document.querySelector(`#carousel-${id}`) as HTMLDivElement;
+        carousel!.scrollLeft -= 500;
+    }
+
+    const handleScrollNext = ( ) => {
+        const carousel = window.document.querySelector(`#carousel-${id}`) as HTMLDivElement;
+        carousel!.scrollLeft += 500;
+    }
+
     return (
         <div className='AdsContainer' id={`ads--container-${id}`}>
-            <div className='scroll-back--button scroll-button'>
+            <div className='scroll-back--button scroll-button' onClick={ handleScrollBack }>
                 <ArrowLeftIcon className='scroll-icon' />
             </div>
             <div className='ads--header--container'>
                 <p>{ label }</p>
             </div>
-            <div className='scroll-next--button scroll-button'>
+            <div className='scroll-next--button scroll-button' onClick={ handleScrollNext }>
                 <ArrowRightIcon className='scroll-icon' />
             </div>
-            <div className='ads-carousel--container'>
+            <div className='ads-carousel--container' id={`carousel-${id}`}>
                 { ads &&
                     ads.map((item, key) => (
                         <AdItem key={key} data={item} />

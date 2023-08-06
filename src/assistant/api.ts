@@ -77,21 +77,9 @@ const API = {
         }
     },
 
-    getAds: async ( ) => {
+    getAds: async ( category?: string ) => {
         try {
-            let response = await fetch(`${baseUrl}/ads`);
-            let data = await response.json();
-            console.log("s", data);
-            return data?.ads;
-        } catch (err) {
-            return err;
-        }
-    },
-
-    getAd: async ( id: string, other?: false ) => {
-        const query = qs.stringify({id, other});
-        try {
-            let response = await fetch(`${baseUrl}/ads/?id=${query}`,
+            let response = await fetch(`${baseUrl}/ads${category ? `?category=${category}` : ""}`, 
             {
                 method: "GET",
                 headers: {
@@ -99,6 +87,18 @@ const API = {
                     "Content-Type": "application/json"
                 }
             });
+            let data = await response.json();
+            // console.log( data );
+            return data?.ads;
+        } catch (err) {
+            return err;
+        }
+    },
+
+    getAd: async ( id: string, other?: false ) => {
+        // const query = qs.stringify({id, other});
+        try {
+            let response = await fetch(`${baseUrl}/ads/${id}`, { method: "GET" });
             let data = await response.json();
             return data;
         } catch (err) {
@@ -115,7 +115,7 @@ const API = {
                 body
             })
             let data = await response.json();
-            console.log(data);
+            // console.log(data);
             return data;
         } catch (err) {
             return err;

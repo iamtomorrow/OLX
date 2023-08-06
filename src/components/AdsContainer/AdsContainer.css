@@ -1,8 +1,8 @@
 
 .AdsContainer {
     width: 100%;
-    height: 500px;
-    background-color: rgba(255, 255, 255, 0);
+    height: 360px;
+    background-color: rgba(0, 0, 0, 0);
     display: flex;
     flex-direction: column;
     align-items: center;

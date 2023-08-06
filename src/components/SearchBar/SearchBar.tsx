@@ -66,8 +66,8 @@ export const SearchBar = ( ) => {
                         <select className='state-filter-bar'>
                             <option></option>
                             { states &&
-                                states.map(item => (
-                                    <option>{item?.name}</option>
+                                states.map((item, index) => (
+                                    <option key={index}>{item?.name}</option>
                                 ))
                             }
                         </select>
@@ -76,8 +76,8 @@ export const SearchBar = ( ) => {
             </div>
             <div className={`search-bar-filter--active`}>
                 { categories &&
-                    categories.map(item => (
-                        <CategorieLayout _id={item._id} name={ item.name } slug={ item.slug } />
+                    categories.map((item, index) => (
+                        <CategorieLayout key={index} _id={item._id} name={ item.name } slug={ item.slug } />
                     ))
                 }
             </div>

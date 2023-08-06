@@ -10,8 +10,9 @@ export const Home = ( ) => {
     return (
         <div className='Home page'>
             <Header />
-            <AdsContainer id={8} label='Recent ads' />
-            <AdsContainer id={8} label='Recent ads' />
+            <AdsContainer id={1} label='Recent ads' category='' />
+            <AdsContainer id={2} label='Electronics' category='electronics' />
+            <AdsContainer id={3} label='Appliances' category='appliances' />
             <Footer />
         </div>
     )

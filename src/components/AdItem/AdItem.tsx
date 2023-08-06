@@ -1,14 +1,19 @@
 
+/* route imports */
+import { Link } from "react-router-dom";
+
+/* type imports */
 import { AdProps } from "../../Types/AdTypes";
+
+/* style imports */
 import "./AdItem.css";
 
 interface AdItemProps {
-    key: number;
     data: AdProps
 }
 
 
-export const AdItem = ( { key, data  }: AdItemProps ) => {
+export const AdItem = ( { data  }: AdItemProps ) => {
 
     // console.log(data);
     const handleAdItemClick = ( id: string ) => {
@@ -16,7 +21,7 @@ export const AdItem = ( { key, data  }: AdItemProps ) => {
     }
 
     return (
-        <div className="AdItem" id={ `${key}` } onClick={ () => handleAdItemClick(data._id) }>
+        <div className="AdItem" id={ data._id } onClick={ () => handleAdItemClick(data._id) }>
             <div className="ad-item-body">
                 <img src={ data.images[0].url } className="ad-item-image" />
             </div>
@@ -27,6 +32,11 @@ export const AdItem = ( { key, data  }: AdItemProps ) => {
                 <div className="ad-item-price">
                     <p>$ { data.price }</p>
                 </div>
+            </div>
+            <div className="ad-item-footer">
+                <Link to={"/"} id="see-details-link" className="link">
+                    See details
+                </Link>
             </div>
         </div>
     )

@@ -29,7 +29,7 @@ export const AdLayout = () => {
     useEffect(() => {
         // console.log("Searching ads...");
         const getAd = async () => {
-            let data = await API.getAd(id as string, "");
+            let data = await API.getAd(id as string);
             setAd(data?.ad[0]);
             setLoading(false);
         }
@@ -84,7 +84,7 @@ export const AdLayout = () => {
                     </div>
                     <div className='ad-bar-footer--container'>
                         <p className='ad-price ad-footer-info'>$ {ad?.price}</p>
-                        { !ad?.price_negotiable === true &&
+                        { ad && ad?.price_negotiable &&
                             <p>Price negotiable</p>
                         }
                         <p className='ad-id'>Code: {ad?._id}</p>

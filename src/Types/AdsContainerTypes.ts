@@ -1,5 +1,6 @@
 
 export interface AdsContainerProps {
     id: number;
-    label: string
+    label: string;
+    category: string;
 }
