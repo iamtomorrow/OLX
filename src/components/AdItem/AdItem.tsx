@@ -12,9 +12,7 @@ interface AdItemProps {
     data: AdProps
 }
 
-
 export const AdItem = ( { data  }: AdItemProps ) => {
-
     // console.log(data);
     const handleAdItemClick = ( id: string ) => {
         window.location.href = `/Ad/${id}`;

@@ -58,7 +58,7 @@ export const AdLayout = () => {
                 <Link to={`/ads/?state=${ad?.state}`} className='link'>
                     <span> {ad?.state} /</span>
                 </Link>
-                <Link to={`/ads/?state=${ad?.state}&category=${ad?.category}`} className='link'>
+                <Link to={`/ads/?state=${ad?.state}&category=${ad?.category.toLocaleLowerCase()}`} className='link'>
                     <span> {ad?.category} /</span>
                 </Link>
                 <span> {ad?.name} </span>

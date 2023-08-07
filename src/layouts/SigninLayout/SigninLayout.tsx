@@ -4,7 +4,7 @@ import API from '../../assistant/api';
 import { doLogin } from '../../assistant/authHandler';
 
 /* react imports */
-import React, { FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 /* layout imports */
 import { ErrorLayout } from '../ErrorLayout/ErrorLayout';
@@ -15,6 +15,8 @@ import { ErrorProps } from '../ErrorLayout/ErrorLayout';
 /* style imports */
 import './SigninLayout.css';
 import { SignOptionsContainer } from '../SignOptionsContainer/SignOptionsContainer';
+
+/* redux imports */
 
 export const SigninLayout = ( ) => {
     const [ email, setEmail ] = useState<string>("");
@@ -31,9 +33,6 @@ export const SigninLayout = ( ) => {
         setErrorLog("");
         setErrorLogs("");
         let data = await API.signin(email, password);
-
-        // alert(data); cors error;
-        // console.log(data);
 
         if ( data.error === undefined ) {
             setDisabled(false);

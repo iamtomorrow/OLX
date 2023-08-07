@@ -4,12 +4,12 @@ import './CategorieLayout.css';
 
 /* type imports */
 import { CategorieProps } from '../../Types/CategorieTypes';
-import API from '../../assistant/api';
+
+/* redux imports */
 
 export const CategorieLayout = ( { _id, name, slug }: CategorieProps ) => {
-
     const handleClick = async ( catName: string ) => {
-        window.location.href = `/Ads/?cateory=${catName}`;
+        // window.location.href = `/Ads/?category=${catName}`;
     }
 
     return (

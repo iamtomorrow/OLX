@@ -20,9 +20,11 @@ import PoweredByTomorrow from '../../../public/media/images/logos/powered-by-tom
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
 
+/* style imports */
 import './SideMenu.css';
 
 export const SideMenu = ( ) => {
+    const user = useSelector((state: RootState) => state.user);
     const menu = useSelector((state: RootState) => state.menu);
 
     const handleLogout = (  ) => {
@@ -43,8 +45,9 @@ export const SideMenu = ( ) => {
                 <div className='side-menu-body'>
                     <Link to="/MyAccount" id='my-account-link'>
                         <div id='user-icon--container'>
-                        <UserIcon className='menu-link-icon' id='my-account-icon' />
+                            <UserIcon className='menu-link-icon' id='my-account-icon' />
                         </div>
+                        <p>{ user.currentUser }</p>
                         <p className='menu-link-p'>My Account</p>
                     </Link>
                     <Link to="/Nots" className='menu-link link'>
