@@ -25,8 +25,9 @@ export const AdsContainer = ( { id, label, category }: AdsContainerProps ) => {
 
     useEffect( () => {
         const getAds = async ( ) => {
-            let data = await API.getAds(category);
+            let data = await API.getAds(undefined, category);
             setAds( data );
+            // console.log(data);
         }
         getAds();
     }, []);

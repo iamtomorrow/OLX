@@ -27,3 +27,32 @@
     cursor: pointer;
     width: 100%;
 }
+
+.ads-header-info-container {
+    width: 60%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 2px 20px 2px 20px;
+}
+
+.ads-header-info-inner--container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background: #d4d4d450;
+    padding-left: 10px;
+}
+
+.ad-header-info-p {
+    font-size: 14px;
+
+}
+@media screen and (max-width: 800px) {
+    .ads-header-info-container {
+        width: 100%;
+    }
+}

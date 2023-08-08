@@ -115,6 +115,11 @@
     background: rgba(128, 128, 128, 0.162);
 }
 
+.category-layout--active {
+    background: rgba(128, 128, 128, 0.162);
+}
+
+
 .category-icon {
     width: 30px;
 }

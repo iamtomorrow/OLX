@@ -1,8 +1,7 @@
 
 .BurgerLayout {
     z-index: 10;
-    width: 10%;
-    height: 34px;
+    width: 34px;
     background: none;
     display: flex;
     align-items: center;

@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
 
-import Logo from '../../../public/media/images/logos/logo-under-sorrow.png'
+import Logo from '../../../public/media/images/logos/logo.png';
 
 import './LogoLayout.css';
 

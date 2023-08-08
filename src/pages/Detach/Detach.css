@@ -37,6 +37,14 @@
     cursor: pointer;
 }
 
+.detach-form-body--container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
 .detach-categories--container {
     width: 100%;
     display: flex;
@@ -47,7 +55,7 @@
 
 .detach-form--container {
     width: 320px;
-    height: auto;
+    height: 600px;
     background: #f1f1f1;
     border-radius: 20px;
     transition: all .25s ease;
@@ -60,6 +68,10 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+}
+
+.form-label {
+    height: auto;
 }
 
 .go-back-icon--container {
@@ -87,7 +99,16 @@
 
 .form-textarea--container {
     width: 100%;
-    height: 100%;
+    height: 200px;
     padding-left: 32px;
     padding-right: 32px;
+}
+.form-textarea {
+    resize: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 12px;
+    background: transparent;
 }

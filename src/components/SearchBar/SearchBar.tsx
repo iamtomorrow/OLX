@@ -2,31 +2,31 @@
 /* API imports */
 import API from '../../assistant/api';
 
-/* layout imports */
-import { CategorieLayout } from '../../layouts/CategorieLayout/CategorieLayout';
-
 /* icon imports */
 import SearchIcon from 'remixicon-react/SearchLineIcon';
-import EqualizerFillIcon from 'remixicon-react/EqualizerFillIcon';
 
 import './SearchBar.css';
 
+/*routes imports */
+import { useLocation } from 'react-router-dom';
+
 /* react imports */
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 /* type imports */
 import { StateProps } from '../../Types/StateTypes';
 import { CategorieProps } from '../../Types/CategorieTypes';
 
 export const SearchBar = ( ) => {
+    const URLParams = () => new URLSearchParams(useLocation().search);
+    const query = URLParams();
+
     const [ states, setStates ] = useState<StateProps[]>([]);
     const [ categories, setCategories ] = useState<CategorieProps[]>([]);
     const [ keyword, setKeyword ] = useState<string>("");
 
     const [ state, setState ] = useState<string>("");
     const [ category, setCategory ] = useState<string>("");
-
-    const [ toggleFilters, setToggleFilters ] = useState(false);
 
     useEffect( () => {
         const getCategories = async ( ) => {
@@ -44,23 +44,26 @@ export const SearchBar = ( ) => {
         getStates();
     }, []);
 
-    const handleToggle = ( ) => {
-        if (  toggleFilters ) {
-            setToggleFilters(false);
+    useEffect( ( ) => {
+        setCategory( query?.get("category") ? query.get("category") as string : "");
+        setState( query?.get("state") ? query.get("state")  as string : "" );
+        setKeyword( query?.get("keyword") ? query.get("keyword") as string : "" );
+    }, []);
+
+    const handleCategoryClick = ( slug: string ) => {
+        console.log("slug: ", slug, "cat: ", category);
+        if (slug === category) {
+            setCategory("");
         } else {
-            setToggleFilters(true);
+            setCategory(slug);
         }
     }
 
     const handleSearchInput = async ( ) => {
-        // alert(`${state}, ${category}, ${keyword}`);
-
-        const stateQueryURL = `${state ? `state=${state}` : ""}`;
-        const categoryQueryURL = `${category ? `category=${category}` : ""}`;
-
-        let location = `/Ads${state || category ? "?" : ""}` + stateQueryURL + `${state && category ? "&" : ""}` + categoryQueryURL;
-        alert(location);
-        window.location.href = location;
+        state ? query.set("state", state) : "";
+        category ? query.set("category", category) : "";
+        keyword ? query.set("keyword", keyword) : "";
+        window.location.href = query ? `/Ads?${query}` : "/Ads";
     }
 
     return (
@@ -68,16 +71,17 @@ export const SearchBar = ( ) => {
             <div className='search-bar--container'>
                 <input id='search-input' 
                         placeholder="Search..." 
+                        value={keyword}
                         onChange={ (e: React.ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)} />
                 <div className='search-side-bar--container'>
                     <SearchIcon id='search-bar-icon' 
                                 className='search-bar-icon' 
                                 onClick={ handleSearchInput } />
-                    <EqualizerFillIcon id='toggle-filters-icon' className="search-bar-icon"
-                            onClick={ handleToggle } />
+                    {/* <EqualizerFillIcon id='toggle-filters-icon' 
+                                       className="search-bar-icon" /> */}
                     <div className='filter-states--container'>
                         <select className='state-filter-bar'>
-                            <option></option>
+                            <option>{state}</option>
                             { states &&
                                 states.map((item, index) => (
                                     <option key={index} 
@@ -93,17 +97,25 @@ export const SearchBar = ( ) => {
             <div className={`category-bar-filter--active`}>
                 { categories &&
                     categories.map((item, index) => (
-                        <div className={`CategoryLayout`}
+                        <div className={`CategoryLayout ${category === item.slug ? "category-layout--active" : ""}`}
                             id={ item._id } 
                             key={index}
-                            onClick={ ( ) => setCategory(item.slug) }>
+                            onClick={ ( ) => handleCategoryClick(item.slug) }>
                             <img src={`../../../public/media/images/icons2/${item.slug}.png`} 
                                 className='category-icon' />
                             <p className='category-name'>{ item.name }</p>
                         </div>
+                        
                     ))
                 }
             </div>
         </div>
     )
 };
+
+/* 
+<CategorieLayout key={index}
+item={item}
+handleClick={ handleCategoryClick } 
+/>
+*/

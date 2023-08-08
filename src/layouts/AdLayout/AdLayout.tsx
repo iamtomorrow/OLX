@@ -39,38 +39,47 @@ export const AdLayout = () => {
     useEffect(() => {
         if (loading === false) {
             let len = ad?.images.length as number;
-            setInterval( () => {
-                setDefaultImage(ad?.images[counter].url as string);
-                setCounter(counter+=1);
-                if (counter === len) {
-                    setCounter(counter = 0);
-                }
-            }, 5000)
+            if (len > 1) {
+                setInterval( () => {
+                    setDefaultImage(ad?.images[counter].url as string);
+                    setCounter(counter+=1);
+                    if (counter === len) {
+                        setCounter(counter = 0);
+                    }
+                }, 5000)
+            }
         }
     }, [loading]); 
 
     return (
         <div className='AdLayout'>
             <div className='break-crumb--container'>
-                <Link to={"/"} className='link'>
-                    <span>Home /</span>
-                </Link>
-                <Link to={`/ads/?state=${ad?.state}`} className='link'>
-                    <span> {ad?.state} /</span>
-                </Link>
-                <Link to={`/ads/?state=${ad?.state}&category=${ad?.category.toLocaleLowerCase()}`} className='link'>
-                    <span> {ad?.category} /</span>
-                </Link>
-                <span> {ad?.name} </span>
+                <div className='break-crumb-inner--container'>
+                    <Link to={"/"} className='break-crumb-link link'>
+                        <span>{`Home / `}</span>
+                    </Link>
+                    <Link to={`/ads/?state=${ad?.state}`} className='break-crumb-link link'>
+                        <span>{` ${ad?.state} / `}</span>
+                    </Link>
+                    <Link to={`/ads/?state=${ad?.state}&category=${ad?.category.toLocaleLowerCase()}`} className='break-crumb-link link'>
+                        <span>{`${ad?.category} / `}</span>
+                    </Link>
+                    <span> {ad?.name.substring(0, 40)} </span>
+                </div>
             </div>
             <div className='ad-top--layout'>
                 <div className='ad-bar--container'>
                     <div className='ad-bar-header--container'>
-                        <p className='ad-name ad-header-info'>{ad?.name}</p>
+                        <p className='ad-name ad-header-info'>{ad?.name.substring(0, 80)}</p>
                         <p className='ad-date-created ad-header-info'>Pubished at: {ad?.date_created}</p>
                         <p className='ad-id ad-header-info'>Code: {ad?._id}</p>
                     </div>
                     <div className='carousel'>
+                        { ad?.images[0] ===undefined &&
+                            <>
+                                <img src={"../../public/media/images/backgrounds/default-ad-image.png"} className='ad-body-image' />
+                            </>
+                        }
                         { ad?.images.length === 1 &&
                             <>
                                 <img className='ad-body-image' src={ad?.images[0].url} />

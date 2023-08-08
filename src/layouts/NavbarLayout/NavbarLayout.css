@@ -1,5 +1,5 @@
 .NavbarLayout {
-    width: 50%;
+    width: 100%;
     height: 100%;
 }
 
@@ -20,9 +20,15 @@
     justify-content: center;
     color: rgb(63, 63, 63);
 }
+
+.navbar-link:hover {
+    color: rgba(81, 81, 81, 0.472);
+    transition: all .25s ease;
+}
 .navbar-icon {
     width: 20px;
 }
 .navbar-p {
+    font-size: 13px;
     margin-left: 3px;
 }

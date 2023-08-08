@@ -77,15 +77,13 @@ const API = {
         }
     },
 
-    getAds: async ( category?: string, state?: string ) => {
-        // console.log("slug: ", category);
-        // console.log("slug: ", state);
+    getAds: async ( query?: URLSearchParams | undefined, category?: string ) => {
+        let endpoint = `${query ? query : ""} ${category ? `category=${category}` : ""}`;
 
-        const stateQueryURL = `${state ? `state=${state}` : ""}`;
-        const categoryQueryURL = `${category ? `category=${category}` : ""}`;
+        console.log(endpoint);
 
         try {
-            let response = await fetch(`${baseUrl}/ads${state || category ? "?" : ""}` + stateQueryURL + `${state && category ? "&" : ""}` + categoryQueryURL, 
+            let response = await fetch(`${baseUrl}/ads?${endpoint}`,
             {
                 method: "GET",
                 headers: {

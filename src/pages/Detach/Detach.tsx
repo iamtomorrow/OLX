@@ -23,6 +23,7 @@ import HelpIcon from 'remixicon-react/QuestionLineIcon';
 /* routes imports */
 import { Link, useNavigate } from 'react-router-dom';
 import { ErrorLayout } from '../../layouts/ErrorLayout/ErrorLayout';
+import { CategorieLayout } from '../../layouts/CategorieLayout/CategorieLayout';
 
 export const Detach = ( ) => {
     const files = useRef() as React.LegacyRef<HTMLInputElement>;
@@ -32,8 +33,10 @@ export const Detach = ( ) => {
 
     const [ stateList, setStateList ] = useState<StateProps []>([]);
     const [ categories, setCategories ] = useState<CategorieProps[]>([]);
-    const [ adCategory, setAdCategory ] = useState<string>("");
-    const [ adCategoryName, setAdCategoryName ] = useState<string>("");
+
+    const [ categoryId, setCategoryId ] = useState<string>("");
+    const [ categoryName, setCategoryName ] = useState<string>("");
+    const [ categorySlug, setCategorySlug ] = useState<string>("");
     const [ categoryActive, setCategoryActive ] = useState<boolean>(false);
 
     const [ title, setTitle ] = useState<string>("");
@@ -59,15 +62,10 @@ export const Detach = ( ) => {
         getStates();
     }, []);
 
-    const handleCategoryClick = ( categoryId: string, categoryName: string ) => {    
-        setAdCategory( categoryId );
-        setAdCategoryName( categoryName );
-        setCategoryActive(true);
-    }
-
     const handleGoBackClick = ( ) => {
-        setAdCategory("");
-        setAdCategoryName("");
+        setCategoryId("");
+        setCategoryName("");
+        setCategorySlug("");
         setCategoryActive(false);
     }
 
@@ -86,7 +84,7 @@ export const Detach = ( ) => {
         if (detachErrors.length === 0) {
             const formData = new FormData();
             formData.append("name", title);
-            formData.append("category", adCategoryName.toLowerCase());
+            formData.append("category", categoryName.toLowerCase());
             formData.append("state", state);
             formData.append("price", price);
             formData.append("price_negotiable", priceNegotiable ? "true" : "false");
@@ -100,6 +98,7 @@ export const Detach = ( ) => {
                 }
             }
             let result = await API.postAd(formData);
+            console.log(result);
             if (result.err) {
                 console.log("Something was wrong!");
             } else {
@@ -109,12 +108,18 @@ export const Detach = ( ) => {
         }
     }
 
+    const handleCategoryClick = ( name: string, id: string, slug: string ) => {
+        setCategorySlug(slug);
+        setCategoryId(id);
+        setCategoryName(name);
+    }
+
     return (
         <div className='Detach page'>
             <div className='detach--container'>
                 <div className='detach-header--container'>
                     <div className='detach-top-header--container'>
-                        <div className='go-home-icon--container'>
+                        <div className='go-home-icon--container' onClick={ () => {} }>
                             <Link to={"/"}>
                                 <ArrowIcon className='go-back-icon' />
                             </Link>
@@ -128,23 +133,28 @@ export const Detach = ( ) => {
                     </div>
 
                     <div className='detach-categories--container'>
-                        { categories &&
-                            categories.map((item, index: number)=> (
-                                <div className="CategoryLayout " key={ index } id={ item._id } onClick={ () => handleCategoryClick(item._id, item.name) } >
-                                    <img src={`../../../public/media/images/icons2/${item.slug}.png`} className='category-icon' />
-                                    <p className='category-name'>{ item.name }</p>
-                                </div>
-                            ))
-                        }
+                    { categories &&
+                        categories.map((item, index) => (
+                            <div className={`CategoryLayout ${categorySlug === item.slug ? "category-layout--active" : ""}`}
+                                id={ item._id } 
+                                key={index}
+                                onClick={ ( ) => handleCategoryClick(item.name, item._id, item.slug) }>
+                                <img src={`../../../public/media/images/icons2/${item.slug}.png`} 
+                                    className='category-icon' />
+                                <p className='category-name'>{ item.name }</p>
+                            </div>
+                            
+                        ))
+                    }
                     </div>
                 </div>
-                { categoryActive &&
+                { categorySlug &&
                     <form className='detach-form--container'>
                         <div className='detach-form-header--container'>
                             <div className='go-back-icon--container' onClick={ handleGoBackClick}>
                                 <ArrowIcon className='go-back-icon' />
                             </div>
-                            <p className='detach-form-header-title'>{ adCategoryName }</p>
+                            <p className='detach-form-header-title'>{ categoryName }</p>
                         </div>
                         <div className='detach-form-body--container'>
                             <label className='form-label'>
@@ -162,6 +172,7 @@ export const Detach = ( ) => {
                             <label className='form-label'>
                                 <div className='form-textarea--container'>
                                     <textarea className='form-textarea' 
+                                        wrap='hard'
                                         name='description' 
                                         required 
                                         placeholder='Description'
@@ -184,6 +195,7 @@ export const Detach = ( ) => {
                             </label>
                             <label className='form-label'>
                                 <div className='form-input--container'>
+                                    <span>Price negotiable?</span>
                                     <input className='form-input' 
                                         type='checkbox' 
                                         name='price_negotiable'
