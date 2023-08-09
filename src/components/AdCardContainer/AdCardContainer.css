@@ -1,0 +1,74 @@
+
+.AdCardContainer {
+    cursor: pointer;
+    width: 60%;
+    height: 200px;
+    padding: 12px 20px 12px 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+.ad-card-division-line {
+    width: 60%;
+    height: 1px;
+    background: rgba(128, 128, 128, 0.285);
+    margin-top: 15px;
+}
+
+.ad-card-inner--container {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    /* background: rgba(0, 0, 0, 0.05); */
+}
+
+.ad-card-left--container {
+    width: 40%;
+    height: 100%;
+}
+.ad-card-image--container {
+    width: 100%;
+    height: 100%;
+}
+.ad-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ad-card-right--container {
+    width: 60%;
+    height: 100%;
+}
+.ad-card-name--container,
+.ad-card-price--container  {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3px 3px 3px 6px;
+}
+.ad-card-name {
+    font-size: 15px;
+}
+.ad-card-price {
+    font-size: 17px;
+    font-weight: bolder;
+}
+
+@media screen and (max-width: 800px) {
+    .AdCardContainer {
+        min-width: 100%;
+    }
+    .ad-card-division-line {
+        min-width: 100%;
+    }
+}
