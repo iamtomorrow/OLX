@@ -8,7 +8,7 @@ import SearchIcon from 'remixicon-react/SearchLineIcon';
 import './SearchBar.css';
 
 /*routes imports */
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 /* react imports */
 import React, { useEffect, useState } from 'react';
@@ -17,9 +17,14 @@ import React, { useEffect, useState } from 'react';
 import { StateProps } from '../../Types/StateTypes';
 import { CategorieProps } from '../../Types/CategorieTypes';
 
+import qs from 'qs';
+
 export const SearchBar = ( ) => {
     const URLParams = () => new URLSearchParams(useLocation().search);
     const query = URLParams();
+    const navigator = useNavigate();
+
+    const [ loading, setLoading ] = useState<boolean>(false);
 
     const [ states, setStates ] = useState<StateProps[]>([]);
     const [ categories, setCategories ] = useState<CategorieProps[]>([]);
@@ -30,7 +35,9 @@ export const SearchBar = ( ) => {
 
     useEffect( () => {
         const getCategories = async ( ) => {
+            setLoading(true);
             let data = await API.getCategories();
+            setLoading(false);
             setCategories( data );
         }
         getCategories();
@@ -38,7 +45,9 @@ export const SearchBar = ( ) => {
 
     useEffect( () => {
         const getStates = async ( ) => {
+            setLoading(true);
             let data = await API.getStates();
+            setLoading(false);
             setStates( data );
         }
         getStates();
@@ -48,22 +57,11 @@ export const SearchBar = ( ) => {
         setCategory( query?.get("category") ? query.get("category") as string : "");
         setState( query?.get("state") ? query.get("state")  as string : "" );
         setKeyword( query?.get("keyword") ? query.get("keyword") as string : "" );
-    }, []);
-
-    const handleCategoryClick = ( slug: string ) => {
-        console.log("slug: ", slug, "cat: ", category);
-        if (slug === category) {
-            setCategory("");
-        } else {
-            setCategory(slug);
-        }
-    }
+    }, [loading]);
 
     const handleSearchInput = async ( ) => {
-        state ? query.set("state", state) : "";
-        category ? query.set("category", category) : "";
-        keyword ? query.set("keyword", keyword) : "";
-        window.location.href = query ? `/Ads?${query}` : "/Ads";
+        let queryString = qs.stringify({ category, state, keyword });
+        window.location.href = query ? `/Ads?${queryString}` : "/Ads";
     }
 
     return (
@@ -80,11 +78,12 @@ export const SearchBar = ( ) => {
                     {/* <EqualizerFillIcon id='toggle-filters-icon' 
                                        className="search-bar-icon" /> */}
                     <div className='filter-states--container'>
-                        <select className='state-filter-bar'>
-                            <option>{state}</option>
+                        <select className='state-filter-bar' placeholder='State'>
+                            <option onClick={ ( ) => setState("") } className='state-filter-option'>{ state ? state : "Select" }</option>
                             { states &&
                                 states.map((item, index) => (
                                     <option key={index} 
+                                            className='state-filter-option'
                                             onClick={ ( ) => setState(item.name) }>
                                             {item?.name}
                                     </option>
@@ -97,10 +96,10 @@ export const SearchBar = ( ) => {
             <div className={`category-bar-filter--active`}>
                 { categories &&
                     categories.map((item, index) => (
-                        <div className={`CategoryLayout ${category === item.slug ? "category-layout--active" : ""}`}
+                        <div className={`CategoryLayout ${item.slug === category ? "category-layout--active" : ""}`}
                             id={ item._id } 
                             key={index}
-                            onClick={ ( ) => handleCategoryClick(item.slug) }>
+                            onClick={ ( ) => setCategory(`${item.slug !== category ? item.slug : '' }`) }>
                             <img src={`../../../public/media/images/icons2/${item.slug}.png`} 
                                 className='category-icon' />
                             <p className='category-name'>{ item.name }</p>

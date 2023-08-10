@@ -4,12 +4,11 @@
   margin: 0;
   box-sizing: border-box;
   font-family: emirates-medium;
-
-  scrollbar-width: none;
+  outline: none;
 }
 
 body {
-  background: #f5f5f5;
+  background: #ffffff;
   width: 100vw;
   height: 100vh;
 }
@@ -31,7 +30,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .link {
@@ -49,6 +48,16 @@ button {
   justify-content: center;
   background-color: #f1f1f1;
   border-radius: 20px;
+}
+
+/* hide scrollbar for Chrome, Brave, Opera*/
+*::-webkit-scrollbar {
+  display: none;
+}
+/* hide scrollbar for Firefox, ID, Edge */
+* { 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @font-face {

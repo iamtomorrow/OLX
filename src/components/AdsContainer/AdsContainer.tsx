@@ -19,14 +19,24 @@ import { AdItem } from '../AdItem/AdItem';
 
 export const AdsContainer = ( { id, label, category }: AdsContainerProps ) => {
     const [ ads, setAds ] = useState<AdProps[]>([]);
+
+    const limit = 20;
+
     useEffect( () => {
         
     }, []);
 
     useEffect( () => {
         const getAds = async ( ) => {
-            let data = await API.getAds(undefined, category);
-            setAds( data );
+            let data = await API.getAds(
+                "asc",
+                limit,
+                0,
+                category,
+                "",
+                ""
+            );
+            setAds( data?.ads );
             // console.log(data);
         }
         getAds();

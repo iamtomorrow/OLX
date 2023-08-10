@@ -14,12 +14,10 @@
     align-items: self-start;
     padding-left: 10%;
     justify-content: center;
-    background-image: url('../../../public/media/images/backgrounds/olx-promo-banner-3.png');
+    background-image: url('../../../public/media/images/backgrounds/olx-promo-banner-4.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
-    background-color: #71E3E4;
     box-shadow: 0 0 22px rgba(56, 56, 56, 0.3);
 }
 
@@ -28,4 +26,10 @@
     color: #ffffff;
     background-color: black;
     font-size: 14px;
+}
+
+@media screen and (max-width: 800px) {
+    .promo-banner-inner--container {
+        background-image: url('../../../public/media/images/backgrounds/olx-promo-banner-mobile-4.png');
+    }
 }

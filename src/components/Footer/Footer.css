@@ -81,6 +81,17 @@
     transition: all .25s ease;
 }
 
+.footer-credits--container {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.powered-by-tomorrow-p {
+    font-size: 12px;
+}
+
 @media screen and (max-width: 800px) {
     .footer-content--container {
         flex-direction: column;

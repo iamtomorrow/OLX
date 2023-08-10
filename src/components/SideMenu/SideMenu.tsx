@@ -19,11 +19,16 @@ import PoweredByTomorrow from '../../../public/media/images/logos/powered-by-tom
 /* reducer imports */
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
+import { toggleMenu } from '../../redux/reducers/MenuReducer';
 
 /* style imports */
 import './SideMenu.css';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 export const SideMenu = ( ) => {
+    const dispatch = useDispatch();
+
     const user = useSelector((state: RootState) => state.user);
     const menu = useSelector((state: RootState) => state.menu);
 
@@ -43,14 +48,13 @@ export const SideMenu = ( ) => {
             </div>
             <div className='side-menu-body--container'>
                 <div className='side-menu-body'>
-                    <Link to="/MyAccount" id='my-account-link'>
+                    <Link to="/MyAccount" id='my-account-link' className='menu-link link'>
                         <div id='user-icon--container'>
                             <UserIcon className='menu-link-icon' id='my-account-icon' />
                         </div>
-                        <p>{ user.currentUser }</p>
                         <p className='menu-link-p'>My Account</p>
                     </Link>
-                    <Link to="/Nots" className='menu-link link'>
+                    <Link to="/Notifications" className='menu-link link'>
                         <NotsIcon className='menu-link-icon' />
                         <p className='menu-link-p'>Notifications</p>
                     </Link>

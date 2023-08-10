@@ -27,7 +27,6 @@ export const AdLayout = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        // console.log("Searching ads...");
         const getAd = async () => {
             let data = await API.getAd(id as string);
             setAd(data?.ad[0]);

@@ -13,6 +13,7 @@ interface AdCardContainerProps {
 export const AdCardContainer = ( { keyItem, item }: AdCardContainerProps ) => {
 
     const handleAdCardClick = ( id: string ) => {
+        console.log(item);
         window.location.href = `/Ad/${id}`;
     }
 
@@ -38,8 +39,8 @@ export const AdCardContainer = ( { keyItem, item }: AdCardContainerProps ) => {
                     <div className='ad-card-price--container'>
                         <p className='ad-card-price'>$ { item.price }</p>
                     </div>
-                    <div>
-
+                    <div className='ad-card-date--container'> 
+                        <p className='ad-card-date'>{ item.date_created }</p>
                     </div>
                 </div>
             </div>

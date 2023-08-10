@@ -21,11 +21,14 @@ import { ProtectedRoute } from './assistant/routeHandler.tsx';
 import { Detach } from './pages/Detach/Detach.tsx';
 import { SideMenu } from './components/SideMenu/SideMenu.tsx';
 import { Ads } from './pages/Ads/Ads.tsx';
+import { TopBannerLayout } from './layouts/TopBannerLayout/TopBannerLayout.tsx';
+import { Notifications } from './pages/Notifications/Notifications.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <React.StrictMode>
       <Provider store={ store }>
+        <TopBannerLayout />
         <SideMenu />
         <Routes>
           <Route path='/' element={ <Home /> } />
@@ -44,9 +47,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             </ProtectedRoute>
           } />
           <Route path='/Ads' element={ <Ads /> } />
+          <Route path='/Notifications' element={ 
+            <ProtectedRoute>
+              <Notifications />
+            </ProtectedRoute>
+           } />
           <Route path="*" element={ <NotFound /> } />
         </Routes>
       </Provider>
-    </React.StrictMode>,
+    </React.StrictMode>
   </BrowserRouter>
 )

@@ -1,0 +1,10 @@
+
+.TopBannerLayout {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    background-image: url('../../../public/media/images/backgrounds/top-banner-background.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

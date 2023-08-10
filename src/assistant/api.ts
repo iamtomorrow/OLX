@@ -77,11 +77,15 @@ const API = {
         }
     },
 
-    getAds: async ( query?: URLSearchParams | undefined, category?: string ) => {
-        let endpoint = `${query ? query : ""} ${category ? `category=${category}` : ""}`;
-
-        console.log(endpoint);
-
+    getAds: async ( 
+        sort?: string, 
+        limit?:number, 
+        offset?:number, 
+        category?:string, 
+        state?:string, 
+        keyword?:string ) => {
+        let endpoint = qs.stringify({ sort, limit, offset, category, state, keyword });
+        // console.log(endpoint);
         try {
             let response = await fetch(`${baseUrl}/ads?${endpoint}`,
             {
@@ -92,8 +96,7 @@ const API = {
                 }
             });
             let data = await response.json();
-            // console.log( data );
-            return data?.ads;
+            return data;
         } catch (err) {
             return err;
         }
@@ -121,6 +124,25 @@ const API = {
             let data = await response.json();
             // console.log(data);
             return data;
+        } catch (err) {
+            return err;
+        }
+    },
+
+    getMe: async () => {
+        let token = Cookies.get("token");
+        try {
+            let response = await fetch(`${baseUrl}/users/me?${qs.stringify({token})}`, 
+            {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            });
+            let data = await response.json();
+            // console.log("data: ",data);
+            return data.user;
         } catch (err) {
             return err;
         }

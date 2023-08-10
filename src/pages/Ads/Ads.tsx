@@ -30,18 +30,52 @@ export const Ads = ( ) => {
     const [ category, setCategory ] = useState<string>(`${ query.get("category") !== null ? query.get("category") : "" }`);
     const [ keyword, setKeyword ] = useState<string>(`${ query.get("keyword") !== null ? query.get("keyword") : "" }`);
     const [ ads, setAds ] = useState<AdProps []>([]);
+    const [ adsCount, setAdsCount ] = useState<number>(0);
 
     const [ loading, setLoading ] = useState<boolean>(false);
 
+    const limit = 4;
+    const [ offset, setOffset ] = useState<number>(0);
+    const [ pagesCount, setPagesCount ] = useState<number>(0);
+    const [ currentPage, setCurrentPage ] = useState<number>(0);
+
+    const getAds = async ( ) => {
+        setLoading(true);
+        let data = await API.getAds( 
+            "asc",
+            limit,
+            offset,
+            category,
+            state,
+            keyword
+        );
+        setAds(data?.ads);
+        setAdsCount(data?.length);
+        setLoading(false);
+    }
+
+    useEffect(() => {
+        setPagesCount( Math.ceil( adsCount / limit ) );
+    }, [ads, adsCount])
+
+    useEffect(() => {
+        setOffset((currentPage * limit) - limit);
+    }, [currentPage]);
+
     useEffect( () => {
-        const getAds = async ( ) => {
-            setLoading(true);
-            let data = await API.getAds(query);
-            setAds(data);
-            setLoading(false);
-        }
+        // alert(query);
+        // console.log("offset: ", offset);
         getAds();
-    }, []);
+    }, [currentPage, offset, adsCount]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [currentPage])
+
+    let pages = [];
+    for (let i = 0; i < pagesCount; i++) {
+        pages.push(i + 1);
+    }
 
     return (
         <div className="Ads page">
@@ -49,7 +83,7 @@ export const Ads = ( ) => {
             <PromoBanner />
             <div className='ads-header-info-container'>
                 <div className='ads-header-info-inner--container '>
-                    { ads && <p className='ad-header-info-p'>{ads.length} {ads.length > 1 ? "results were" : "result was"} found.</p>}
+                    { ads && <p className='ad-header-info-p'>{adsCount} {adsCount > 1 ? "results were" : "result was"} found.</p>}
                     { !ads && <p className='ad-header-info-p'>No results were found.</p> }
                     <p className='ad-header-info-p'>{keyword ? `'${keyword}'` : ""} {category.toLocaleUpperCase() } in {state ? state : " Brazil"}</p>
                 </div>
@@ -58,11 +92,20 @@ export const Ads = ( ) => {
             { ads &&
                 ads.map((item, index:number) => 
                     <>
-                        <AdCardContainer item={item} keyItem={index} key={index} />
-                        <div className='ad-card-division-line'></div>
+                        <AdCardContainer item={item} 
+                            keyItem={index}
+                            key={ index } />
+                        <div key={ "line"+ index } className='ad-card-division-line'></div>
                     </>
                 )
             }
+            <div className='ads-pagination--container'>
+                { pages &&
+                    pages.map( ( item: number, index: number ) => (
+                        <div key={ index } className={`pagination-index ${currentPage === index ? "pagination-index--active" : ""}`} onClick={ ( ) => setCurrentPage(item)}>{item}</div>
+                    ))
+                }
+            </div>
             <Footer />
         </div>
     )

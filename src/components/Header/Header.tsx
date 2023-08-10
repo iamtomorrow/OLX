@@ -11,7 +11,7 @@ import { BurgerLayout } from '../../layouts/BurgerLayout/BurgerLayout';
 import { SearchBar } from '../SearchBar/SearchBar';
 
 export const Header = ( ) => {
-    const [ winWidth, setWinWidth ] = useState<number>(0);
+    const [ winWidth, setWinWidth ] = useState<number>( window.innerWidth );
 
     useEffect( () => {
         window.addEventListener("resize", ( ) => {

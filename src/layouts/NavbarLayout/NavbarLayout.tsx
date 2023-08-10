@@ -18,7 +18,7 @@ export const NavbarLayout = ( ) => {
                         <p className='navbar-p'>My Ads</p>
                     </li>
                 </Link>
-                <Link to="/Nots" className='link'>
+                <Link to="/Notifications" className='link'>
                     <li className='navbar-link'>
                         <NotIcon className='navbar-icon' />
                         <p className='navbar-p'>Notifications</p>

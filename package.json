@@ -26,6 +26,7 @@
     "ts-cookies": "^1.0.0"
   },
   "devDependencies": {
+    "@types/qs": "^6.9.7",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",

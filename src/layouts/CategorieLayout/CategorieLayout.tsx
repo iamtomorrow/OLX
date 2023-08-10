@@ -17,8 +17,8 @@ interface CategoryLayoutProps {
 }
 
 export const CategorieLayout = ( { item, handleClick }: CategoryLayoutProps ) => {
-    const URLParams = () => new URLSearchParams(useLocation().search);
-    const query = URLParams();
+    // const URLParams = () => new URLSearchParams(useLocation().search);
+    // const query = URLParams();
 
     const [ categoryActive, setCategoryActive ] = useState<boolean>(false);
 
@@ -28,10 +28,6 @@ export const CategorieLayout = ( { item, handleClick }: CategoryLayoutProps ) =>
         }
         setCategoryActive(!categoryActive);
         console.log(categoryActive);
-    }
-
-    const setCategory = ( ) => {
-        alert("mdsv");
     }
 
     return (

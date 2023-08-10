@@ -48,9 +48,39 @@
 }
 
 .ad-header-info-p {
-    font-size: 14px;
-
+    font-size: 13px;
+    color: rgb(52, 52, 52);
 }
+
+.ads-pagination--container {
+    width: 60%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-index {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    margin-left: 3px;
+    margin-right: 3px;
+    border: 1px solid rgba(128, 128, 128, 0.343);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+.pagination-index:hover {
+    background-color: #d4d4d450;
+}
+.pagination-index--active {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
 @media screen and (max-width: 800px) {
     .ads-header-info-container {
         width: 100%;

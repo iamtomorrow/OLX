@@ -55,7 +55,8 @@ export const Footer = ( ) => {
                 </div>
             </div>
             <div className="footer-credits--container">
-                <img src={ PoweredByTomorrow } className='powered-by-tomorrow' />
+                <p className='powered-by-tomorrow-p'>2023 powered by tomorrow</p>
+                {/* <img src={ PoweredByTomorrow } className='powered-by-tomorrow' /> */}
             </div>
         </div>
     )
