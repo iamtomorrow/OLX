@@ -4,18 +4,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const slice = createSlice({
     name: "user",
     initialState: {
-        currentUser: "",
+        name: "sd",
+        email: "",
+        token: ""
     },
     reducers: {
         setUser: ( state, action ) => {
-            switch (action.type) {
-                case "SIGNIN":
-                    state.currentUser = action.payload;
-                    break;
-                case "LOGOUT":
-                    state.currentUser = action.payload;
-                    break;
-            }
+            state.name = action.payload;
         }
     }
 })

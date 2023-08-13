@@ -1,6 +1,12 @@
 import Cookies from "ts-cookies";
 import qs from 'qs';
 
+/* redux imports */
+import { setUser } from '../../src/redux/reducers/UserReducer';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { useDispatch } from 'react-redux';
+
 const baseUrl = 'http://localhost:3200';
 
 interface PostAdProps {
@@ -37,7 +43,6 @@ const API = {
                 token = token ;
             }
         }
-        console.log("starting request...");
 
         try {
             let response = await fetch(`${baseUrl}/users/signin`, 
@@ -131,6 +136,7 @@ const API = {
 
     getMe: async () => {
         let token = Cookies.get("token");
+        console.log(token);
         try {
             let response = await fetch(`${baseUrl}/users/me?${qs.stringify({token})}`, 
             {

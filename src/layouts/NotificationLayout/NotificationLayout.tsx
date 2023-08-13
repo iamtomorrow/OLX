@@ -16,7 +16,7 @@ export const NotificationLayout = ( ) => {
                 </div>
                 <div className='notification-layout-body--container'>
                     <div className='notification-layout-card--container'>
-                        One you have notifications, they will appear here.
+                        Once you have notifications, they will appear here.
                     </div>  
                 </div>
             </div>

@@ -2,7 +2,7 @@
 
 import API from "../assistant/api"
 
-const doSignin = ( email, password ) => {
+const doSignin = ( email: string, password: string ) => {
     return API.signin(email, password);
 }
 

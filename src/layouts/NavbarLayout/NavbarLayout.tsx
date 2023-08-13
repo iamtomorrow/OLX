@@ -10,7 +10,7 @@ import './NavbarLayout.css';
 
 export const NavbarLayout = ( ) => {
     return (
-        <div className='NavbarLayout'>
+        <nav className='NavbarLayout'>
             <ul className='navbar-layout-links'>
                 <Link to="/MyAds" className='link'>
                     <li className='navbar-link'>
@@ -31,6 +31,6 @@ export const NavbarLayout = ( ) => {
                     </li>
                 </Link>
             </ul>
-        </div>
+        </nav>
     )
 };

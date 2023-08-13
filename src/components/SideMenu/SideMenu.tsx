@@ -23,10 +23,11 @@ import { toggleMenu } from '../../redux/reducers/MenuReducer';
 
 /* style imports */
 import './SideMenu.css';
-import { useEffect } from 'react';
+import { MutableRefObject, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 export const SideMenu = ( ) => {
+    const sideMenu = useRef() as MutableRefObject<HTMLDivElement>;
     const dispatch = useDispatch();
 
     const user = useSelector((state: RootState) => state.user);
@@ -38,7 +39,7 @@ export const SideMenu = ( ) => {
     }
 
     return (
-        <div className={`SideMenu SideMenu-${ menu.toggled ? "active" : ""}`}>
+        <div className={`SideMenu SideMenu-${ menu.toggled ? "active" : ""}`} >
             <div className='side-menu-header--container'>
                 <div className='side-menu-header'>
                     <div className='user-menu-bar'>
@@ -47,7 +48,7 @@ export const SideMenu = ( ) => {
                 </div>
             </div>
             <div className='side-menu-body--container'>
-                <div className='side-menu-body'>
+                <div className='side-menu-body' >
                     <Link to="/MyAccount" id='my-account-link' className='menu-link link'>
                         <div id='user-icon--container'>
                             <UserIcon className='menu-link-icon' id='my-account-icon' />

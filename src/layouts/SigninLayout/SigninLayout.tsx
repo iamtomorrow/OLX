@@ -16,7 +16,6 @@ import { ErrorProps } from '../ErrorLayout/ErrorLayout';
 import './SigninLayout.css';
 import { SignOptionsContainer } from '../SignOptionsContainer/SignOptionsContainer';
 
-/* redux imports */
 
 export const SigninLayout = ( ) => {
     const [ email, setEmail ] = useState<string>("");

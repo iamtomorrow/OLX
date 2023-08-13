@@ -17,6 +17,10 @@ export const Header = ( ) => {
         window.addEventListener("resize", ( ) => {
             setWinWidth( window.innerWidth );
         })
+
+        return () => {
+            window.removeEventListener("resize", () => { });
+        }
     }, []);
 
     return (

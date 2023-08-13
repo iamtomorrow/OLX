@@ -37,17 +37,18 @@ export const Ads = ( ) => {
     const limit = 4;
     const [ offset, setOffset ] = useState<number>(0);
     const [ pagesCount, setPagesCount ] = useState<number>(0);
-    const [ currentPage, setCurrentPage ] = useState<number>(0);
+    const [ currentPage, setCurrentPage ] = useState<number>(1);
 
     const getAds = async ( ) => {
         setLoading(true);
+        setAds([]);
         let data = await API.getAds( 
             "asc",
             limit,
             offset,
-            category,
-            state,
-            keyword
+            category ? category : "",
+            state ? state : "",
+            keyword ? keyword : ""
         );
         setAds(data?.ads);
         setAdsCount(data?.length);
@@ -63,18 +64,17 @@ export const Ads = ( ) => {
     }, [currentPage]);
 
     useEffect( () => {
-        // alert(query);
-        // console.log("offset: ", offset);
         getAds();
-    }, [currentPage, offset, adsCount]);
+        console.log(ads);
+    }, [ adsCount, currentPage, offset]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [currentPage])
 
     let pages = [];
-    for (let i = 0; i < pagesCount; i++) {
-        pages.push(i + 1);
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
     }
 
     return (
@@ -102,7 +102,11 @@ export const Ads = ( ) => {
             <div className='ads-pagination--container'>
                 { pages &&
                     pages.map( ( item: number, index: number ) => (
-                        <div key={ index } className={`pagination-index ${currentPage === index ? "pagination-index--active" : ""}`} onClick={ ( ) => setCurrentPage(item)}>{item}</div>
+                        <div key={ index } 
+                            className={`pagination-index ${currentPage === index + 1 ? "pagination-index--active" : ""}`} 
+                            onClick={ ( ) => { console.log(currentPage), setCurrentPage(item) } } >
+                                {item}
+                        </div>
                     ))
                 }
             </div>

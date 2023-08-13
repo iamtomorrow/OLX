@@ -18,7 +18,7 @@ import "./Footer.css";
 
 export const Footer = ( ) => {
     return (
-        <div className="Footer">
+        <footer className="Footer">
             <div className="footer-content--container">
                 <div className='footer-left--container'>
                     <div className="footer-links--container">
@@ -58,6 +58,6 @@ export const Footer = ( ) => {
                 <p className='powered-by-tomorrow-p'>2023 powered by tomorrow</p>
                 {/* <img src={ PoweredByTomorrow } className='powered-by-tomorrow' /> */}
             </div>
-        </div>
+        </footer>
     )
 }

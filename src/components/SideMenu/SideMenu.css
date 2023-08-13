@@ -3,7 +3,7 @@
     z-index: 9;
     position: absolute;
     width: 100%;
-    height: calc(100% - 80px);
+    height: 100%;
     transform: translateX(-100%);
     background: #f8f8f8;
     backdrop-filter: blur(10px);
@@ -39,10 +39,6 @@
     transition: all .25s ease;
 }
 
-#my-account-icon {
-    width: 20px;
-}
-
 .menu-link {
     margin-top: 4px;
     width: 100%;
@@ -66,7 +62,7 @@
 }
 .menu-link-p {
     margin-left: 10px;
-    font-size: 14px;
+    font-size: 13px;
     color: rgb(21, 21, 21);
 }
 
@@ -96,15 +92,18 @@
     .SideMenu {
         position: absolute;
         right: 0;
-        top: 165px;
+        top: 60px;
         width: 300px;
         height: 70vh;
-        box-shadow: 3px 3px 12px rgba(171, 171, 171, 0.397);
+        box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.195);
         transform: translateX(-10%);
         display: none;
         opacity: 0;
         border-radius: 10px;
         transition: all .25s ease;
+    }
+    .side-menu-header--container {
+        display: none;
     }
     .SideMenu-mobile--active {
         display: flex;
