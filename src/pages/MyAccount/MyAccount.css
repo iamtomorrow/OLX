@@ -1,0 +1,159 @@
+
+.my-account-section--container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.my-account-section-inner--container {
+    width: 40%;
+    height: 100%;
+    padding: 40px 10px 10px 10px;
+}
+
+.my-account-info--container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.195);
+    border-radius: 10px;
+}
+
+.my-account-info--header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.my-account-info--header-title {
+    font-size: 14px;
+}
+
+.my-account-info-body--container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.my-account-info {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.my-account-label {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 12px;
+}
+
+.my-account-body-input {
+    width: 90%;
+    height: 40px;
+    font-size: 12px;
+    background: none;
+    border-radius: 4px;
+    border: none;
+    border: rgba(128, 128, 128, 0.432) 1px solid;
+    padding-left: 6px;
+}
+.my-account-footer-input {
+    width: 90%;
+    height: 40px;
+    font-size: 12px;
+    background: rgba(63, 63, 63, 0.05);
+    border-radius: 4px;
+    border: none;
+    border: rgba(128, 128, 128, 0.432) 1px solid;
+    padding-left: 6px;
+}
+.edit-icon {
+    cursor: pointer;
+    fill: #FF6B00;
+    width: 20px;
+}
+.edit-icon:hover {
+    fill: #ff6a0049;
+}
+
+.my-account-info-footer--container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-warning {
+    font-size: 11px;
+    color: rgb(63, 63, 63);
+}
+
+.delete-my-account-section--container {
+    width: 40%;
+    height: 240px;
+    padding: 40px 10px 10px 10px;
+}
+
+.delete-my-account-section-inner--container {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.195);
+    border-radius: 10px;
+}
+.advice-section--container {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#delete-my-account {
+    padding: 10px;
+}
+.advice-section--container p {
+    font-size: 12px;
+    text-align: center;
+}
+.delete-account-button--container {
+    height: auto;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#delete-account-button {
+    cursor: pointer;
+    color: red;
+    width: 100%;
+    height: 40px;
+}
+#warning-icon {
+    fill: red;
+    width: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .my-account-section-inner--container {
+        width: 90%;
+    }
+    .delete-my-account-section--container {
+        width: 90%;
+    }
+}

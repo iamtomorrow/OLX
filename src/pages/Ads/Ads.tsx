@@ -95,7 +95,7 @@ export const Ads = ( ) => {
                         <AdCardContainer item={item} 
                             keyItem={index}
                             key={ index } />
-                        <div key={ "line"+ index } className='ad-card-division-line'></div>
+                        {/* <div key={ "line"+ index } className='ad-card-division-line'></div> */}
                     </>
                 )
             }

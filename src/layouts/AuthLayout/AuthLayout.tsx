@@ -61,7 +61,7 @@ export const AuthLayout = ( ) => {
                         <div className='my-account-link-info'>
                             { userInfo && 
                             <div className='my-account-link-info-inner'>
-                                <p>{ userInfo?.name }</p>
+                                <p>{ userInfo?.name.split(" ")[0] }</p>
                                 <ArrowDownIcon id='arrow-down-icon' />
                             </div> }
                             { !userInfo && <p>MyAccount</p> }

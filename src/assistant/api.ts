@@ -136,7 +136,7 @@ const API = {
 
     getMe: async () => {
         let token = Cookies.get("token");
-        console.log(token);
+        // console.log(token);
         try {
             let response = await fetch(`${baseUrl}/users/me?${qs.stringify({token})}`, 
             {
