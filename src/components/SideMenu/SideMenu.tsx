@@ -19,18 +19,11 @@ import PoweredByTomorrow from '../../../public/media/images/logos/powered-by-tom
 /* reducer imports */
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
-import { toggleMenu } from '../../redux/reducers/MenuReducer';
 
 /* style imports */
 import './SideMenu.css';
-import { MutableRefObject, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
 
 export const SideMenu = ( ) => {
-    const sideMenu = useRef() as MutableRefObject<HTMLDivElement>;
-    const dispatch = useDispatch();
-
-    const user = useSelector((state: RootState) => state.user);
     const menu = useSelector((state: RootState) => state.menu);
 
     const handleLogout = (  ) => {
@@ -43,7 +36,7 @@ export const SideMenu = ( ) => {
             <div className='side-menu-header--container'>
                 <div className='side-menu-header'>
                     <div className='user-menu-bar'>
-
+                        
                     </div>
                 </div>
             </div>

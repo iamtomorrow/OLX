@@ -24,37 +24,39 @@ import { Ads } from './pages/Ads/Ads.tsx';
 // import { TopBannerLayout } from './layouts/TopBannerLayout/TopBannerLayout.tsx';
 import { Notifications } from './pages/Notifications/Notifications.tsx';
 
+/* context imports */
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <BrowserRouter>
-    <React.StrictMode>
-      <Provider store={ store }>
-        { /* <TopBannerLayout /> */ }
-        <SideMenu />
-        <Routes>
-          <Route path='/' element={ <Home /> } />
-          <Route path='/About' element={ <About /> } />
-          <Route path='/Signin' element={ <Signin /> } />
-          <Route path='/Signup' element={ <Signup /> } />
-          <Route path='/Ad/:id' element={ <Ad /> } />
-          <Route path='/MyAccount' element={
-            <ProtectedRoute>
-              <MyAccount />
-            </ProtectedRoute>
-          } />
-          <Route path='/Detach' element={
-            <ProtectedRoute>
-               <Detach /> 
-            </ProtectedRoute>
-          } />
-          <Route path='/Ads' element={ <Ads /> } />
-          <Route path='/Notifications' element={ 
-            <ProtectedRoute>
-              <Notifications />
-            </ProtectedRoute>
-           } />
-          <Route path="*" element={ <NotFound /> } />
-        </Routes>
-      </Provider>
-    </React.StrictMode>
-  </BrowserRouter>
+    <BrowserRouter>
+      <React.StrictMode>
+        <Provider store={ store }>
+          { /* <TopBannerLayout /> */ }
+          <SideMenu />
+          <Routes>
+            <Route path='/' element={ <Home /> } />
+            <Route path='/About' element={ <About /> } />
+            <Route path='/Signin' element={ <Signin /> } />
+            <Route path='/Signup' element={ <Signup /> } />
+            <Route path='/Ad/:id' element={ <Ad /> } />
+            <Route path='/MyAccount' element={
+              <ProtectedRoute>
+                <MyAccount />
+              </ProtectedRoute>
+            } />
+            <Route path='/Detach' element={
+              <ProtectedRoute>
+                <Detach /> 
+              </ProtectedRoute>
+            } />
+            <Route path='/Ads' element={ <Ads /> } />
+            <Route path='/Notifications' element={ 
+              <ProtectedRoute>
+                <Notifications />
+              </ProtectedRoute>
+            } />
+            <Route path="*" element={ <NotFound /> } />
+          </Routes>
+        </Provider>
+      </React.StrictMode>
+    </BrowserRouter>
 )

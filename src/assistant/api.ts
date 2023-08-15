@@ -152,6 +152,45 @@ const API = {
         } catch (err) {
             return err;
         }
+    },
+
+    editMe: async ( name?: string, email?: string ) => {
+        let token = Cookies.get("token");
+        try {
+            let response = await fetch(`${baseUrl}/users/editme?${qs.stringify({ token, name, email })}`, 
+            {
+                method: "PUT",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            })
+            let data = await response.json();
+            return data;
+        } catch (err) {
+            console.log(err)
+            return err;
+        }
+    },
+
+    deteleMe: async ( ) => {
+        let token = Cookies.get("token");
+        try {
+            let response = await fetch(`${baseUrl}/users/deleteme?${qs.stringify({ token })}`, 
+            {
+                method: "PUT",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            })
+            let data = await response.json();
+            Cookies.set("token", null);
+            return data;
+        } catch (err) {
+            console.log(err)
+            return err;
+        }
     }
 };
 

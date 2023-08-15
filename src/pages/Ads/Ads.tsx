@@ -35,38 +35,32 @@ export const Ads = ( ) => {
     const [ loading, setLoading ] = useState<boolean>(false);
 
     const limit = 4;
-    const [ offset, setOffset ] = useState<number>(0);
     const [ pagesCount, setPagesCount ] = useState<number>(0);
     const [ currentPage, setCurrentPage ] = useState<number>(1);
 
-    const getAds = async ( ) => {
-        setLoading(true);
-        setAds([]);
-        let data = await API.getAds( 
-            "asc",
-            limit,
-            offset,
-            category ? category : "",
-            state ? state : "",
-            keyword ? keyword : ""
-        );
-        setAds(data?.ads);
-        setAdsCount(data?.length);
-        setLoading(false);
-    }
+    useEffect( () => {
+        const getAds = async ( ) => {
+            setLoading(true);
+            let offset = ( currentPage - 1 )* 4;
+
+            let data = await API.getAds( 
+                "asc",
+                limit,
+                offset = offset,
+                category ? category : "",
+                state ? state : "",
+                keyword ? keyword : ""
+            );
+            setAds(data?.ads);
+            setAdsCount(data?.length);
+            setLoading(false);
+        }
+        getAds();
+    }, [currentPage, adsCount]);
 
     useEffect(() => {
         setPagesCount( Math.ceil( adsCount / limit ) );
     }, [ads, adsCount])
-
-    useEffect(() => {
-        setOffset((currentPage * limit) - limit);
-    }, [currentPage]);
-
-    useEffect( () => {
-        getAds();
-        console.log(ads);
-    }, [ adsCount, currentPage, offset]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -104,7 +98,7 @@ export const Ads = ( ) => {
                     pages.map( ( item: number, index: number ) => (
                         <div key={ index } 
                             className={`pagination-index ${currentPage === index + 1 ? "pagination-index--active" : ""}`} 
-                            onClick={ ( ) => { console.log(currentPage), setCurrentPage(item) } } >
+                            onClick={ ( ) => setCurrentPage(item) } >
                                 {item}
                         </div>
                     ))

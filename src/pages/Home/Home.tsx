@@ -8,12 +8,8 @@ import { PromoBanner } from '../../layouts/PromoBanner/PromoBanner';
 import { TopBannerLayout } from '../../layouts/TopBannerLayout/TopBannerLayout';
 
 import './Home.css';
-import { RootState } from '../../redux/store';
-import { useEffect } from 'react';
 
 export const Home = ( ) => {
-    const user = useSelector((state: RootState) => state.user);
-
     return (
         <div className='Home page'>
             <Header />

@@ -13,7 +13,7 @@ interface AdCardContainerProps {
 export const AdCardContainer = ( { keyItem, item }: AdCardContainerProps ) => {
 
     const handleAdCardClick = ( id: string ) => {
-        console.log(item);
+        // console.log(item);
         window.location.href = `/Ad/${id}`;
     }
 

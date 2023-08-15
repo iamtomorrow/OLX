@@ -14,6 +14,7 @@
     "@types/js-cookie": "^3.0.3",
     "@types/react-redux": "^7.1.25",
     "@types/react-router-dom": "^5.3.3",
+    "@types/validator": "^13.11.1",
     "js-cookie": "^3.0.5",
     "js-cookies": "^1.0.4",
     "qs": "^6.11.2",
@@ -23,7 +24,8 @@
     "react-router-dom": "^6.14.2",
     "redux": "^4.2.1",
     "remixicon-react": "^1.0.0",
-    "ts-cookies": "^1.0.0"
+    "ts-cookies": "^1.0.0",
+    "validator": "^13.11.0"
   },
   "devDependencies": {
     "@types/qs": "^6.9.7",
