@@ -12,13 +12,13 @@
 .search-bar--container {
     width: 100%;
     height: 50px;
-    padding: 3px 12px 3px 12px;
+    padding: 3px 6px 3px 6px;
     border-radius: 36px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 3px 3px 12px rgba(171, 171, 171, 0.1);
+    background: #FFF;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.10);
 }
 #search-input {
     width: 90%;
@@ -81,7 +81,6 @@
     cursor: pointer;
 }
 
-
 /* category bar */
 .category-bar-filter--active {
     overflow-x: scroll;
@@ -127,11 +126,37 @@
     background: rgba(128, 128, 128, 0.162);
 }
 
-
 .category-icon {
     width: 30px;
 }
 .category-name {
     color: rgb(52, 52, 52);
     font-size: 12px;
+}
+
+
+@media screen and (max-width: 800px) { 
+    .SearchBar  {
+        height: 200px;
+        justify-content: space-around;
+        /* background-color:  yellow; */
+    }
+    .category-bar-filter--active  {
+        width: 100%;
+        height: 100%;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .CategoryLayout {
+        min-width: 60px;
+        height: 60px;
+    }
+
+    .category-icon {
+        width: 20px;
+    } 
+    .category-name {
+        font-size: 10px;
+    }
 }

@@ -1,7 +1,7 @@
 
+/* redux imports */
+import MenuReducer from '../../redux/reducers/MenuReducer';
 import { toggleMenu } from '../../redux/reducers/MenuReducer';
-
-/* reducer imports */
 import { useDispatch } from 'react-redux';
 
 /* react imports */
@@ -14,12 +14,11 @@ import './BurgerLayout.css'
 
 export const BurgerLayout = ( ) => {
     const [ toggle, setToggle ] = useState<boolean>(false);
-
-    const dispatch = useDispatch( );
+    const dispatch = useDispatch();
 
     const setToggleMenu = ( toggle: boolean ) => {
         setToggle( !toggle );
-        dispatch( toggleMenu(toggle));
+        dispatch( toggleMenu(!toggle) );
     }
 
     return (

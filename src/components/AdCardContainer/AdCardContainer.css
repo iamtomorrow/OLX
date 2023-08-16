@@ -27,6 +27,7 @@
     justify-content: space-between;
     background: rgb(255, 253, 253); 
     transition: all .25s ease;
+    box-shadow: 6px 6px 16px 0 rgba(0, 0, 0, 0.10)
 }
 .ad-card-inner--container:hover {
     box-shadow: 0px 0px 12px rgba(65, 65, 65, 0.15);

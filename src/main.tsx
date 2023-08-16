@@ -31,7 +31,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <React.StrictMode>
         <Provider store={ store }>
           { /* <TopBannerLayout /> */ }
-          <SideMenu />
+          <SideMenu  />
           <Routes>
             <Route path='/' element={ <Home /> } />
             <Route path='/About' element={ <About /> } />

@@ -19,20 +19,29 @@ import PoweredByTomorrow from '../../../public/media/images/logos/powered-by-tom
 /* reducer imports */
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
+import { toggleMenu } from '../../redux/reducers/MenuReducer';
 
 /* style imports */
 import './SideMenu.css';
+import { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+
+interface SideMenuProps {
+    toggled: boolean;
+}
 
 export const SideMenu = ( ) => {
     const menu = useSelector((state: RootState) => state.menu);
+    const sideMenu = useRef<HTMLDivElement>(null);
+    const dispatch = useDispatch();
 
-    const handleLogout = (  ) => {
+    const handleLogout = ( ) => {
         logout();
         window.location.href = "/";
     }
 
     return (
-        <div className={`SideMenu SideMenu-${ menu.toggled ? "active" : ""}`} >
+        <div className={`SideMenu ${ menu.toggled ? "SideMenu-active" : ""}`} ref={ sideMenu } >
             <div className='side-menu-header--container'>
                 <div className='side-menu-header'>
                     <div className='user-menu-bar'>
@@ -41,7 +50,7 @@ export const SideMenu = ( ) => {
                 </div>
             </div>
             <div className='side-menu-body--container'>
-                <div className='side-menu-body' >
+                <div className='side-menu-body' onClick={ () => { sideMenu.current?.classList.remove('SideMenu-mobile--active'); dispatch(toggleMenu(!true)) } } >
                     <Link to="/MyAccount" id='my-account-link' className='menu-link link'>
                         <div id='user-icon--container'>
                             <UserIcon className='menu-link-icon' id='my-account-icon' />
