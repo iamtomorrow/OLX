@@ -1,3 +1,9 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
 
 /* react imports */
 import { useEffect, useRef, useState } from 'react';
@@ -22,13 +28,12 @@ import HelpIcon from 'remixicon-react/QuestionLineIcon';
 
 /* routes imports */
 import { Link, useNavigate } from 'react-router-dom';
-import { ErrorLayout } from '../../layouts/ErrorLayout/ErrorLayout';
-import { CategorieLayout } from '../../layouts/CategorieLayout/CategorieLayout';
+// import { ErrorLayout } from '../../layouts/ErrorLayout/ErrorLayout';
 
 export const Detach = ( ) => {
     const files = useRef() as React.LegacyRef<HTMLInputElement>;
     const navigate = useNavigate();
-    const [ errors, setErrors ] = useState<string[]>([]);
+    // const [ errors, setErrors ] = useState<string[]>([]);
     const [ detachErrors, setDetachErrors ] = useState<string []>([]);
 
     const [ stateList, setStateList ] = useState<StateProps []>([]);
@@ -44,7 +49,7 @@ export const Detach = ( ) => {
     const [ price, setPrice ] = useState<string>("");
     const [ priceNegotiable, setPriceNegotiable ] = useState<boolean>(false);
     const [ state, setState ] = useState<string>("");
-    const [ images, setImages ] = useState<string[]>([]);
+    // const [ images, setImages ] = useState<string[]>([]);
 
     useEffect( () => {
         const getCategories = async ( ) => {
@@ -69,8 +74,9 @@ export const Detach = ( ) => {
         setCategoryActive(false);
     }
 
-    const handleDetachClick = async ( e: React.FormEvent<HTMLFormElement> ) => {  
+    const handleDetachClick = async ( e: React.FormEvent<HTMLFormElement>) => {  
         e.preventDefault();
+        alert("Nd");
         if (title.trim() === "") {
             setDetachErrors(prev => [...prev, "A valid title must be providaded."]);
         }
@@ -99,10 +105,11 @@ export const Detach = ( ) => {
             }
             let result = await API.postAd(formData);
             console.log(result);
+            alert(result);
             if (result.err) {
                 console.log("Something was wrong!");
             } else {
-                navigate(`/Ad/${result.ad._id}`);
+                window.location.href = `/Ad/${result.ad._id}`;
                 return;
             }
         }
@@ -143,13 +150,12 @@ export const Detach = ( ) => {
                                     className='category-icon' />
                                 <p className='category-name'>{ item.name }</p>
                             </div>
-                            
                         ))
                     }
                     </div>
                 </div>
                 { categorySlug &&
-                    <form className='detach-form--container'>
+                    <form className='detach-form--container' onSubmit={ handleDetachClick }>
                         <div className='detach-form-header--container'>
                             <div className='go-back-icon--container' onClick={ handleGoBackClick}>
                                 <ArrowIcon className='go-back-icon' />
@@ -176,7 +182,6 @@ export const Detach = ( ) => {
                                         name='description' 
                                         required 
                                         placeholder='Description'
-                                        autoFocus
                                         onChange={ (e) => setDescription(e.target.value) } ></textarea>
                                     <div className='input-border-bottom'></div>
                                 </div>
@@ -194,18 +199,17 @@ export const Detach = ( ) => {
                                 </div>
                             </label>
                             <label className='form-label'>
-                                <div className='form-input--container'>
+                                <div className='form-input--container input-checkbox--container'>
                                     <span>Price negotiable?</span>
-                                    <input className='form-input' 
+                                    <input className='form-input checkbox' 
                                         type='checkbox' 
                                         name='price_negotiable'
                                         onClick={ () => setPriceNegotiable(!priceNegotiable) } />
-                                    <div className='input-border-bottom'></div>
                                 </div>
                             </label>
                             <label className='form-label'>
                                 <select placeholder='State' className='select-form--container'>
-                                    <option></option>
+                                    <option>{ state ? state : "Select state"}</option>
                                     {
                                         stateList.map((i, index:number) => 
                                         <option 
@@ -217,23 +221,19 @@ export const Detach = ( ) => {
                                 </select>
                             </label>
                             <label className='form-label'>
-                                <div className='form-input--container'>
-                                    <input className='form-input' 
+                                <div className='form-input--container input-image--container'>
+                                    <input className='form-input input-image' 
                                         type='file' 
                                         name='files'
                                         ref={ files }
                                         accept='image/png, image/jpg, image/jpeg, image/webp'
                                         multiple />
-                                    <div className='input-border-bottom'></div>
                                 </div>
                             </label>
                         </div>
-                        <div className='form-footer-info'>
-                            <p className='form-footer-info-text'>A OLX não compartilha seus dados com empresas fora do grupo OLX Brasil que oferecem serviços similares.
-O uso dos seus dados pode ser consultado na Política de privacidade, com a qual você concorda ao enviar o anúncio.</p>
-                        </div>
+                        {/* <div className='form-footer-info'>  </div> */}
                         <div className='submit-form-button--container'>
-                            <button className='submit-form-button' onClick={ handleDetachClick }>
+                            <button type='submit' className='submit-form-button'>
                                 Detach
                             </button>
                         </div>

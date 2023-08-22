@@ -1,3 +1,9 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
 
 /* type imports */
 import { AdProps } from '../../Types/AdTypes';

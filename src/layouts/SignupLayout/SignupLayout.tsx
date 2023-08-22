@@ -100,7 +100,7 @@ export const SignupLayout = ( ) => {
                     <label className='form-label'>
                         <div className='form-input--container'>
                             <select placeholder='State' className='select-form--container'>
-                                <option></option>
+                                <option>{ state ? state : "Select state" }</option>
                                 {
                                     stateList.map(i => <option onClick={ () => setState(i?.name) }>{i?.name}</option>)
                                 }

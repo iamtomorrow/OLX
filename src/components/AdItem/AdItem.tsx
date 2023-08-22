@@ -1,3 +1,9 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
 
 /* route imports */
 import { Link } from "react-router-dom";

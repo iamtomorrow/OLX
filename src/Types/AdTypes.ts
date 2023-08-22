@@ -1,3 +1,10 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
+
 import { UserProps } from "./UserTypes"
 
 export interface AdImageProps {

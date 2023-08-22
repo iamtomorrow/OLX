@@ -1,23 +1,15 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
+
 import Cookies from "ts-cookies";
 import qs from 'qs';
 
-/* redux imports */
-import { setUser } from '../../src/redux/reducers/UserReducer';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
-import { useDispatch } from 'react-redux';
-
-const baseUrl = 'http://localhost:3200';
-
-interface PostAdProps {
-    name: string,
-    category: string,
-    state: string,
-    price: string,
-    price_negotiable: string,
-    description: string,
-    images: [any]
-}
+// const baseUrl2 = 'http://localhost:3200';
+const baseUrl = 'https://olx-api.onrender.com';
 
 const API = {
     signup: async ( name: string, email: string, state: string, password: string ) => {
@@ -63,7 +55,14 @@ const API = {
 
     getStates: async ( ) => {
         try {
-            let response = await fetch("http://localhost:3200/states", { method: "GET" });
+            let response = await fetch(`${baseUrl}/states`, 
+            { 
+                method: "GET" ,
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            });
             let data = await response.json();
             return data?.result;
         } catch (err) {
@@ -92,7 +91,7 @@ const API = {
         let endpoint = qs.stringify({ sort, limit, offset, category, state, keyword });
         // console.log(endpoint);
         try {
-            let response = await fetch(`${baseUrl}/ads?${endpoint}`,
+            let response = await fetch(`${baseUrl}/ads/?${endpoint}`,
             {
                 method: "GET",
                 headers: {
@@ -121,7 +120,7 @@ const API = {
     postAd: async ( body: any ) => {
         let token = Cookies.get("token");
         try {
-            let response = await fetch(`${baseUrl}/ads/create?token=${token}`, 
+            let response = await fetch(`${baseUrl}/ads/create/?${ qs.stringify({token})}`, 
             {
                 method: "POST",
                 body
@@ -138,7 +137,7 @@ const API = {
         let token = Cookies.get("token");
         // console.log(token);
         try {
-            let response = await fetch(`${baseUrl}/users/me?${qs.stringify({token})}`, 
+            let response = await fetch(`${baseUrl}/users/me/?${qs.stringify({token})}`, 
             {
                 method: "GET",
                 headers: {
@@ -157,7 +156,7 @@ const API = {
     editMe: async ( name?: string, email?: string ) => {
         let token = Cookies.get("token");
         try {
-            let response = await fetch(`${baseUrl}/users/editme?${qs.stringify({ token, name, email })}`, 
+            let response = await fetch(`${baseUrl}/users/editme/?${qs.stringify({ token, name, email })}`, 
             {
                 method: "PUT",
                 headers: {
@@ -176,7 +175,7 @@ const API = {
     deteleMe: async ( ) => {
         let token = Cookies.get("token");
         try {
-            let response = await fetch(`${baseUrl}/users/deleteme?${qs.stringify({ token })}`, 
+            let response = await fetch(`${baseUrl}/users/deleteme/?${qs.stringify({ token })}`, 
             {
                 method: "PUT",
                 headers: {
@@ -189,6 +188,24 @@ const API = {
             return data;
         } catch (err) {
             console.log(err)
+            return err;
+        }
+    },
+
+    getMyAds: async () => {
+        let token = Cookies.get("token");
+        try {
+            let response = await fetch(`${baseUrl}/ads/myads/?${ qs.stringify({ token }) }`, 
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+            });
+            let data = await response.json();
+            return data;
+        } catch (err) {
             return err;
         }
     }

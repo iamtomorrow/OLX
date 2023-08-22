@@ -1,3 +1,9 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
 
 /* API imports */
 import API from '../../assistant/api';
@@ -111,10 +117,3 @@ export const SearchBar = ( ) => {
         </div>
     )
 };
-
-/* 
-<CategorieLayout key={index}
-item={item}
-handleClick={ handleCategoryClick } 
-/>
-*/

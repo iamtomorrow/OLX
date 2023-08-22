@@ -1,3 +1,10 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
+
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
@@ -21,8 +28,9 @@ import { ProtectedRoute } from './assistant/routeHandler.tsx';
 import { Detach } from './pages/Detach/Detach.tsx';
 import { SideMenu } from './components/SideMenu/SideMenu.tsx';
 import { Ads } from './pages/Ads/Ads.tsx';
-// import { TopBannerLayout } from './layouts/TopBannerLayout/TopBannerLayout.tsx';
 import { Notifications } from './pages/Notifications/Notifications.tsx';
+import { MyAds } from './pages/MyAds/MyAds.tsx';
+// import { TopBannerLayout } from './layouts/TopBannerLayout/TopBannerLayout.tsx';
 
 /* context imports */
 
@@ -52,6 +60,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path='/Notifications' element={ 
               <ProtectedRoute>
                 <Notifications />
+              </ProtectedRoute>
+            } />
+            <Route path='/MyAds' element={
+              <ProtectedRoute>
+                 <MyAds /> 
               </ProtectedRoute>
             } />
             <Route path="*" element={ <NotFound /> } />

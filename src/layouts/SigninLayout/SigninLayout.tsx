@@ -25,7 +25,7 @@ export const SigninLayout = ( ) => {
     const [ errorLog, setErrorLog ] = useState<string>("");
     const [ errorLogs, setErrorLogs ] = useState< ErrorProps[] | any >([]);
 
-    const handleSubmit = async ( event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async ( event: FormEvent<HTMLFormElement> ) => {
         event.preventDefault();
         setDisabled( true );
         setErrorLog("");
@@ -59,7 +59,7 @@ export const SigninLayout = ( ) => {
             <SignOptionsContainer name={"Signin"} />
 
             <div className='signin-layout-form--container'>
-                <form className='signin-form'>
+                <form className='signin-form' onSubmit={ handleSubmit }>
                     <label className='form-label'>
                         <div className='form-input--container'>
                             <input className='form-input' 
@@ -92,10 +92,10 @@ export const SigninLayout = ( ) => {
                     <div className='form-footer-info'>
                         <p className='form-footer-info-text'>By proceeding, you consent to get email or SMS messages, including by automated means, from Tomorrow [tm] and its affiliates to the email provided.</p>
                     </div>
+                    <div className='submit-form-button--container'>
+                        <button type='submit' className='submit-form-button' >Signin</button>
+                    </div>
                 </form>
-            </div>
-            <div className='submit-form-button--container'>
-                <button type='submit' onClick={ handleSubmit } className='submit-form-button' >Signin</button>
             </div>
         </div>
     )

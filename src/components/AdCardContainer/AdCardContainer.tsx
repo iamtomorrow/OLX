@@ -1,3 +1,9 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
 
 /* type imports */
 import { AdProps } from '../../Types/AdTypes';
@@ -13,7 +19,6 @@ interface AdCardContainerProps {
 export const AdCardContainer = ( { keyItem, item }: AdCardContainerProps ) => {
 
     const handleAdCardClick = ( id: string ) => {
-        // console.log(item);
         window.location.href = `/Ad/${id}`;
     }
 

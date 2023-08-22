@@ -1,3 +1,9 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
 
 /* auth handlers imports */
 import { logout } from '../../assistant/authHandler';
@@ -61,11 +67,11 @@ export const SideMenu = ( ) => {
                         <NotsIcon className='menu-link-icon' />
                         <p className='menu-link-p'>Notifications</p>
                     </Link>
-                    <Link to="/Chat" className='menu-link link'>
+                    {/* <Link to="/Chat" className='menu-link link'>
                         <ChatIcon className='menu-link-icon' />
                         <p className='menu-link-p'>Chat</p>
-                    </Link>
-                    <Link to="/Ads" className='menu-link link'>
+                    </Link> */}
+                    <Link to="/MyAds" className='menu-link link'>
                         <AdsIcon className='menu-link-icon' />
                         <p className='menu-link-p'>My Ads</p>
                     </Link>

@@ -1,3 +1,9 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
 
 /* icon imports */
 import ArrowLeftIcon from 'remixicon-react/ArrowDropLeftLineIcon';

@@ -1,3 +1,9 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
 
 /* API imports */
 import API from '../../assistant/api';
@@ -31,6 +37,7 @@ export const AdLayout = () => {
             let data = await API.getAd(id as string);
             setAd(data?.ad[0]);
             setLoading(false);
+            console.log(data.ad[0].images);
         }
         getAd();
     }, []);
@@ -74,7 +81,7 @@ export const AdLayout = () => {
                         <p className='ad-id ad-header-info'>Code: {ad?._id}</p>
                     </div>
                     <div className='carousel'>
-                        { ad?.images[0] ===undefined &&
+                        { ad?.images[0] === undefined &&
                             <>
                                 <img src={"../../public/media/images/backgrounds/default-ad-image.png"} className='ad-body-image' />
                             </>

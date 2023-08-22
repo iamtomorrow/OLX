@@ -1,7 +1,12 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
 
 /* image imports */
 import logo from '../../../public/media/images/logos/footer-logo.png';
-import PoweredByTomorrow from '../../../public/media/images/logos/powered-by-tomorrow-white.png';
 
 /* icon imports */
 import InstagramIcon from 'remixicon-react/InstagramLineIcon';
@@ -29,10 +34,10 @@ export const Footer = ( ) => {
                             <Link to={"/HelpAndContact"} className='footer-link link'  >
                                 Security tips
                             </Link>
-                            <Link to={"/HelpAndContact"} className='footer-link link'  >
+                            <Link to={"/Detach"} className='footer-link link'  >
                                 Sell on OLX
                             </Link>
-                            <Link to={"/HelpAndContact"} className='footer-link link' >
+                            <Link to={"/About"} className='footer-link link' >
                                 About us
                             </Link>
                             <Link to={"/HelpAndContact"} className='footer-link link' >

@@ -1,3 +1,9 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
 
 * {
   padding: 0;
@@ -24,6 +30,11 @@ button {
   height: 100%;
 }
 
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #f2f2f2a2;
+}
+
 .page {
   width: 100%;
   min-height: 100%;
@@ -46,7 +57,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f1f1f1;
+  background-color: var(--secondary-color);
   border-radius: 20px;
 }
 

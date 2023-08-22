@@ -1,3 +1,9 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
 
 .SearchBar {
     width: 90%;
@@ -27,6 +33,7 @@
     outline: none;
     border-radius: 30px;
     background: none;
+    padding-left: 10px;
 }
 
 .search-side-bar--container {
@@ -115,15 +122,15 @@
 }
 .CategoryLayout:hover
 {
-    background: rgba(128, 128, 128, 0.162);
+    background: var(--secondary-color);
     transition: all .25s ease;
 }
 .CategoryLayout--active {
-    background: rgba(128, 128, 128, 0.162);
+    background: var(--secondary-color);
 }
 
 .category-layout--active {
-    background: rgba(128, 128, 128, 0.162);
+    background: var(--secondary-color);
 }
 
 .category-icon {

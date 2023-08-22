@@ -1,0 +1,81 @@
+/* 
+##
+## Copyright (c) Tomorrow Group.
+## Licensed under the MIT License.
+##
+*/
+
+.MyAdsLayout {
+    width: 100%;
+    height: auto;
+}
+
+.my-ads-layout-inner--container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.my-ads-layout-header--container {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.my-ads-layout-body--container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.my-ads-layout-card--container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 60%;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.my-ads-layout-card-inner--container {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    transition: all .25s ease;
+}
+.my-ads-layout-card-inner--container:hover {
+    transition: all .25s ease;
+    box-shadow: 6px 6px 16px 0 rgba(0, 0, 0, 0.10);
+}
+
+.card-image--container {
+    width: 100px;
+    height: 100px;
+}
+.card-image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.ad-card-info--container {
+    width: 100%;
+    height: 100%;
+    font-size: 10px;
+}
