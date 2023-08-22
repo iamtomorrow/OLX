@@ -28,10 +28,10 @@ export const Footer = ( ) => {
                 <div className='footer-left--container'>
                     <div className="footer-links--container">
                         <ul>
-                            <Link to={"/HelpAndContact"} className='footer-link link'  >
+                            <Link to={"/"} className='footer-link link'  >
                                 Help and contact
                             </Link>
-                            <Link to={"/HelpAndContact"} className='footer-link link'  >
+                            <Link to={"/"} className='footer-link link'  >
                                 Security tips
                             </Link>
                             <Link to={"/Detach"} className='footer-link link'  >
@@ -39,9 +39,6 @@ export const Footer = ( ) => {
                             </Link>
                             <Link to={"/About"} className='footer-link link' >
                                 About us
-                            </Link>
-                            <Link to={"/HelpAndContact"} className='footer-link link' >
-                                Site map
                             </Link>
                         </ul>
                     </div>
@@ -61,7 +58,6 @@ export const Footer = ( ) => {
             </div>
             <div className="footer-credits--container">
                 <p className='powered-by-tomorrow-p'>2023 powered by tomorrow</p>
-                {/* <img src={ PoweredByTomorrow } className='powered-by-tomorrow' /> */}
             </div>
         </footer>
     )

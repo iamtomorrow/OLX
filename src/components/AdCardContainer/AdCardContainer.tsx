@@ -29,11 +29,9 @@ export const AdCardContainer = ( { keyItem, item }: AdCardContainerProps ) => {
             <div className='ad-card-inner--container'>
                 <div className='ad-card-left--container'>
                     <div className='ad-card-image--container'>
-                        { item.images[0] === undefined &&
-                             <img className='ad-card-image' src={"../../public/media/images/backgrounds/default-ad-image.png"} />
-                        }
-                        { item.images.length &&
-                             <img className='ad-card-image' src={ item.images[0].url } />
+                        { item.images[0] === undefined 
+                            ? <img className='ad-card-image' src={"../../public/media/images/backgrounds/default-ad-image.png"} />
+                            : <img className='ad-card-image' src={ item.images[0].url } />
                         }
                     </div>
                 </div>

@@ -29,11 +29,9 @@ export const AdItem = ( { data  }: AdItemProps ) => {
              onClick={ () => handleAdItemClick(data._id) }>
             <div className="ad-item-inner--container">
                 <div className="ad-item-body">
-                    { data.images[0] === undefined &&
-                        <img src={"../../public/media/images/backgrounds/default-ad-image.png"} className="ad-item-image" />
-                    }
-                    { data.images.length &&
-                        <img src={ data.images[0].url } className="ad-item-image" /> 
+                    { !data.images.length  
+                        ? <img src={"../../public/media/images/backgrounds/default-ad-image.png"} className="ad-item-image" />
+                        : <img src={ data.images[0].url } className="ad-item-image" /> 
                     }
                 </div>
                 <div className="ad-item-info">
